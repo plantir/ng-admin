@@ -1,0 +1,23 @@
+// local Variable 
+$headerColor: #2196f3;
+// styles
+header {
+  background-color: $headerColor;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+  min-height: 80px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  z-index: 11;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 0 11px;
+  &>div {
+    padding: 17px 0;
+  }
+}

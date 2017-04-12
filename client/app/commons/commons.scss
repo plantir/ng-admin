@@ -1,1 +1,107 @@
-@import '~normalize.css'
+@import 'scss/_variable';
+@import '~normalize.css';
+@import '~angular-material/angular-material';
+@import 'scss/angular-material/angular-material'; //overWrite angular material
+@import 'scss/angular-material/RTL/angular-material.rtl'; //overWrite angular material
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
+@import './sidenav/sidenav';
+@import './logo/logo';
+@import './topMenu/topMenu';
+
+
+
+.rtl {
+    direction: rtl;
+}
+a{
+    text-decoration: none;
+    font-size: 13px;
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.pull-right {
+    float: right!important;
+}
+
+.pull-left {
+    float: left!important;
+}
+
+*:focus {
+    outline: none;
+}
+
+*[ng-click],
+*[ui-sref],
+*[toggle-submenu] {
+    &:not(.disabled) {
+        cursor: pointer;
+    }
+}
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+#main {
+    position: relative;
+    padding-bottom: 110px;
+    padding-top: $header-H + 20;
+}
+
+// .sub-menu
+.sub-menu {
+    ul {
+        padding: 0;
+        margin: 0;
+        >li {
+            >a {
+                color: #7f7f7f;
+                padding: 8px 50px 8px 20px;
+                font-weight: 500;
+                display: block;
+            }
+            &:first-child {
+                >a {
+                    padding-top: 16px;
+                }
+            }
+        }
+    }
+    >a:before {
+        content: "\f067";
+        transform: scale(1);
+    }
+    >a:before,
+    >a:after {
+        position: absolute;
+        top: 14px;
+        color: #575757;
+        font-family: 'FontAwesome';
+        font-size: 14px;
+        left: 15px;
+        transition: all;
+        transition-duration: 250ms;
+        backface-visibility: hidden;
+    }
+    &.toggled {
+        >a:before {
+            transform: scale(0);
+        }
+        >a:after {
+            content: "\f068";
+            transform: scale(1);
+        }
+    }
+}
+
+// text color
+.c-white{
+    color:white
+}

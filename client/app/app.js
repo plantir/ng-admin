@@ -7,7 +7,7 @@ import filtersModule from './filters/filters';
 import servicesModule from './services/services';
 import commosModule from './commons/commons';
 import AppComponent from './app.component';
-import "../scss/app.scss";
+import "./app.scss";
 angular.module('app', [
     configModule,
     commosModule,

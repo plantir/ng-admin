@@ -1,0 +1,52 @@
+sidenav {
+  color: red;
+  .mCSB_inside>.mCSB_container {
+    margin-right: 0;
+  }
+  .mCSB_scrollTools {
+    left: 0;
+    right: auto;
+    z-index: 5;
+    width: auto;
+  }
+  .mCS-dark.mCSB_scrollTools .mCSB_dragger {
+    .mCSB_dragger_bar {
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+    &.mCSB_dragger_onDrag {
+      .mCSB_dragger_bar {
+        background-color: rgba(0, 0, 0, 0.6)
+      }
+    }
+  }
+  .main-menu {
+    list-style: none;
+    padding-left: 0;
+    margin: 20px 0 0 0;
+    li {
+      & a {
+        padding: 14px 52px 14px 20px;
+        display: block;
+        color: #4C4C4C;
+        font-weight: 500;
+        position: relative;
+        text-align: right;
+        &>i {
+          position: absolute;
+          right: 16px;
+          font-size: 20px;
+          top: 0;
+          width: 25px;
+          text-align: center;
+          padding: 13px 0;
+        }
+      }
+      &.active,&:hover {
+        &>a {
+          color: #262626;
+          background-color: #F4F4F4;
+        }
+      }
+    }
+  }
+}

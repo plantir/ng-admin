@@ -1,0 +1,12 @@
+md-sidenav {
+    position: fixed;
+    top: $header-H;
+    overflow: hidden;
+    width: 268px;
+    &>div{
+        overflow: auto;
+    }
+    &.md-sidenav-right {
+        top: $header-H;
+    }
+}

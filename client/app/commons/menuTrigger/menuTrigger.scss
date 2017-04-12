@@ -1,0 +1,59 @@
+menu-trigger {
+  direction: ltr;
+  &>div {
+    float: right;
+    width: 65px;
+    height: 45px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 7px;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+      transition: all;
+      -webkit-transition-duration: 300ms;
+      transition-duration: 300ms;
+      transform: scale(0);
+      z-index: 0;
+    }
+    .line-wrap {
+      width: 18px;
+      height: 12px;
+      transition: all;
+      transition-duration: 300ms;
+      margin: 16px 20px;
+      .line {
+        width: 18px;
+        height: 2px;
+        transition: all;
+        transition-duration: 300ms;
+        background-color: #fff;
+      }
+      .line.center {
+        margin: 3px 0;
+      }
+    }
+    &.open {
+      &:before {
+        transform: scale(1);
+      }
+      .line-wrap {
+        transform: rotate(180deg);
+        .line {
+          &.top {
+            width: 12px;
+            transform: translateX(-1px) translateY(0px) rotate(-45deg);
+          }
+          &.bottom {
+            width: 12px;
+            transform: translateX(-1px) translateY(0px) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+}

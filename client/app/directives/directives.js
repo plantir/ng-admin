@@ -1,5 +1,10 @@
 import angular from 'angular';
-let directivesModule = angular.module('app.directives', [])
+import customScrollBarDirective from './customScrollBar/customScrollBar'
+import customtoggleSubmenu from './toggleSubmenu/toggleSubmenu'
+let directivesModule = angular.module('app.directives', [
+    customScrollBarDirective,
+    customtoggleSubmenu
+])
     .name;
 
 export default directivesModule;

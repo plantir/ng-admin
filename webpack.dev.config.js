@@ -23,6 +23,14 @@ config.module.rules = [{
     test: /\.(woff|woff2|eot|ttf)$/,
     loader: 'url-loader?limit=8192'
   },
+  {
+    test: /jquery-mousewheel/,
+    loader: "imports-loader?define=>false&this=>window"
+  },
+  {
+    test: /malihu-custom-scrollbar-plugin/,
+    loader: "imports-loader?define=>false&this=>window"
+  },
   // { test: /\.woff2?$/, loader: "url?limit=10000&minetype=application/font-woff" },
   {
     test: /\.html$/,
