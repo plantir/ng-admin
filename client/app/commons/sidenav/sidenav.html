@@ -1,33 +1,40 @@
 <md-sidenav custom-scroll-bar class="md-sidenav-right" md-component-id="menu" md-disable-backdrop md-whiteframe="4">
 
 
-  <md-toolbar class="md-theme-indigo">
-    <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
-  </md-toolbar>
-  <div>
-    <ul class="main-menu">
+  <div class="profile-menu">
+    <a toggle-submenu>
+      <div class="profile-pic">
+        <img src="/img/user1.jpg" alt="">
+      </div>
+      <div class="profile-info">
+        Armin Kheirkhahan
+        <i class="fa fa-caret-down"></i>
+      </div>
+    </a>
+    <ul class="main-menu" style="display: block;">
       <li>
-        <a ui-sref="home"><i class="fa fa-home"></i>Home</a>
+        <a href=""><i class="fa fa-user"></i> View Profile</a>
       </li>
-      <li class="sub-menu">
-        <a toggle-submenu><i class="fa fa-home"></i>Headers</a>
-        <ul>
-          <li><a >Textual menu</a></li>
-          <li><a >Image logo</a></li>
-          <li><a >Mainmenu on top</a></li>
-        </ul>
-      </li>
-      <li>
-        <a ui-sref="home"><i class="fa fa-home"></i>Home</a>
-      </li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      <li><a href=""><i class="fa fa-user-secret"></i> Privacy Settings</a></li>
+      <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
+      <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
     </ul>
   </div>
+  <ul class="main-menu">
+    <li>
+      <a ui-sref="home"><i class="fa fa-home"></i>Home</a>
+    </li>
+    <li class="sub-menu">
+      <a toggle-submenu><i class="fa fa-home"></i>Headers</a>
+      <ul>
+        <li><a>Textual menu</a></li>
+        <li><a>Image logo</a></li>
+        <li><a>Mainmenu on top</a></li>
+      </ul>
+    </li>
+    <li>
+      <a ui-sref="home"><i class="fa fa-home"></i>Home</a>
+    </li>
+  </ul>
 
 </md-sidenav>

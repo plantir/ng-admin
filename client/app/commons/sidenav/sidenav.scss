@@ -1,3 +1,6 @@
+@import '~angular-material/modules/js/sidenav/sidenav.css';
+
+
 sidenav {
   color: red;
   .mCSB_inside>.mCSB_container {
@@ -41,10 +44,70 @@ sidenav {
           padding: 13px 0;
         }
       }
-      &.active,&:hover {
+      &.active,
+      &:hover {
         &>a {
           color: #262626;
           background-color: #F4F4F4;
+        }
+      }
+    }
+  }
+  .profile-menu {
+    >a {
+      display: block;
+      height: 129px;
+      margin-bottom: 5px;
+      width: 100%;
+      background: url(/img/profile-menu.png) no-repeat left top;
+      background-size: 100%;
+      .profile-pic {
+        padding: 12px;
+        text-align: right;
+        img {
+          width: 47px;
+          height: 47px;
+          border-radius: 50%;
+          border: 3px solid rgba(0, 0, 0, 0.14);
+          box-sizing: content-box;
+        }
+      }
+      .profile-info {
+        background: rgba(0, 0, 0, 0.37);
+        padding: 7px 14px;
+        color: #fff;
+        margin-top: 20px;
+        position: relative;
+        text-align: right;
+        i {
+          font-size: 14px;
+          line-height: 100%;
+          position: absolute;
+          left: 15px;
+          top: 7px;
+          transition: all;
+          transition-duration: 300ms;
+        }
+      }
+    }
+    .main-menu {
+      display: none;
+      margin: 0 0 0;
+      border-bottom: 1px solid #E6E6E6;
+      >li>a {
+        padding: 14px 52px 14px 20px;
+        display: block;
+        color: #4C4C4C;
+        font-weight: 500;
+        position: relative;
+        i {
+          position: absolute;
+          right: 16px;
+          font-size: 20px;
+          top: 0;
+          width: 25px;
+          text-align: center;
+          padding: 13px 0;
         }
       }
     }
