@@ -41,6 +41,9 @@ config.module.rules = [{
             sourceMap: true
           }
         },
+        {
+          loader: 'autoprefixer-loader'
+        },
 
         // {
         // loader:'font?format[]=truetype&format[]=woff&format[]=embedded-opentype'

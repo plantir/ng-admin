@@ -1,17 +1,24 @@
 import angular from 'angular';
-import menuTriggerComponent from './menuTrigger/menuTrigger';
-import sidenavComponent from './sidenav/sidenav';
-import headerComponent from './header/header';
-import logoComponent from './logo/logo';
-import topMenuComponent from './topMenu/topMenu';
-import footerComponent from './footer/footer';
+import  "angular-material/modules/js/core/core";
+import  "angular-material/modules/js/icon/icon";
+
+import menuTrigger from './menuTrigger/menuTrigger';
+import sidenav from './sidenav/sidenav';
+import header from './header/header';
+import logo from './logo/logo';
+import topMenu from './topMenu/topMenu';
+import footer from './footer/footer';
+
+
+
 let commonsModule = angular.module('app.commons', [
-        menuTriggerComponent,
-        sidenavComponent,
-        headerComponent,
-        footerComponent,
-        logoComponent,
-        topMenuComponent,
+        "material.components.icon",
+        menuTrigger,
+        sidenav,
+        header,
+        footer,
+        logo,
+        topMenu,
     ])
     .name;
 

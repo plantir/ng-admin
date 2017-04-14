@@ -1,4 +1,5 @@
 import angular from "angular";
+import $ from "jquery";
 let <%= name %>Directive = angular.module('<%= name %>Directive', [])
     .directive('<%= name %>', directive)
     .name;

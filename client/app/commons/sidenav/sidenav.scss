@@ -1,6 +1,4 @@
 @import '~angular-material/modules/js/sidenav/sidenav.css';
-
-
 sidenav {
   color: red;
   .mCSB_inside>.mCSB_container {
@@ -87,6 +85,13 @@ sidenav {
           top: 7px;
           transition: all;
           transition-duration: 300ms;
+        }
+      }
+    }
+    &.toggled {
+      .profile-info {
+        i {
+          transform: rotate(180deg);
         }
       }
     }

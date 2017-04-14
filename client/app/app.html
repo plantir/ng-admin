@@ -5,6 +5,11 @@
 <section id="main">
   <sidenav></sidenav>
   <div class="container">
+    <div class="animated ng-lightSpeedIn ng-lightSpeedOut " ng-class="'ng-delay'+$index*100" ng-repeat="item in items">
+      <div style="min-height: 35px">{{item}}</div>
+    </div>
+    <h1 class="animated ng-fadeIn ng-fadeOut ng-delay1000" ng-show="armin">armin</h1>
+    <a href="" ng-click="armin = !armin">show/hide</a>
     <div ui-view></div>
   </div>
 </section>

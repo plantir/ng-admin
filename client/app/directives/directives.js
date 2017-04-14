@@ -1,9 +1,12 @@
 import angular from 'angular';
-import customScrollBarDirective from './customScrollBar/customScrollBar'
-import customtoggleSubmenu from './toggleSubmenu/toggleSubmenu'
+import customScrollBar from './customScrollBar/customScrollBar'
+import toggleSubmenu from './toggleSubmenu/toggleSubmenu'
+import dropDown from './dropDown/dropDown'
 let directivesModule = angular.module('app.directives', [
-    customScrollBarDirective,
-    customtoggleSubmenu
+    customScrollBar,
+    toggleSubmenu,
+    dropDown,
+
 ])
     .name;
 

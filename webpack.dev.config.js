@@ -39,18 +39,22 @@ config.module.rules = [{
   {
     test: /\.scss$/,
     use: [{
-      loader: "style-loader" // creates style nodes from JS strings
-    }, {
-      loader: "css-loader", // translates CSS into CommonJS
-      options: {
-        sourceMap: true
+        loader: "style-loader" // creates style nodes from JS strings
+      }, {
+        loader: "css-loader", // translates CSS into CommonJS
+        options: {
+          sourceMap: true,
+        }
+      }, {
+        loader: 'autoprefixer-loader'
+      },
+      {
+        loader: "sass-loader", // compiles Sass to CSS
+        options: {
+          sourceMap: true
+        }
       }
-    }, {
-      loader: "sass-loader", // compiles Sass to CSS
-      options: {
-        sourceMap: true
-      }
-    }]
+    ]
   }
 
 ]

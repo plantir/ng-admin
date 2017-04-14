@@ -1,23 +1,28 @@
 @import 'scss/_variable';
 @import '~normalize.css';
-// @import '~angular-material/angular-material';
+@import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
+@import "~font-awesome/scss/font-awesome.scss";
+
 @import 'scss/angular-material/angular-material'; //overWrite angular material
 @import 'scss/angular-material/RTL/angular-material.rtl'; //overWrite angular material
-@import "~font-awesome/scss/font-awesome.scss";
-@import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
-@import './sidenav/sidenav';
+@import 'scss/animate';
+
+@import './footer/footer';
+@import './header/header';
 @import './logo/logo';
+@import './menuTrigger/menuTrigger';
+@import './sidenav/sidenav';
 @import './topMenu/topMenu';
-
-
 
 .rtl {
     direction: rtl;
 }
-a{
+
+a {
     text-decoration: none;
     font-size: 13px;
 }
+
 .clearfix::after {
     content: "";
     display: table;
@@ -102,6 +107,19 @@ a{
 }
 
 // text color
-.c-white{
-    color:white
+.c-white {
+    color: white
+}
+
+// bage
+.bage {
+    position: absolute;
+    font-style: normal;
+    background: #f44336;
+    padding: 1px 5px;
+    border-radius: 2px;
+    right: 7px;
+    top: -3px;
+    font-size: 10px;
+    line-height: 15px;
 }

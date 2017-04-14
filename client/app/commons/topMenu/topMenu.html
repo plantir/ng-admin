@@ -1,28 +1,28 @@
 <ul>
   <li>
-    <md-menu md-offset="0 36">
-      <md-button aria-label="Open demo menu" class="fa fa-bell c-white" ng-click="$mdMenu.open($event)">
-      </md-button>
-      <md-menu-content width="4">
-        <md-menu-item>
-          <div class="list-header">
-            Notification
-          </div>
-        </md-menu-item>
-        <md-menu-item ng-repeat="item in [1, 2, 3]">
-          <md-button ng-click="ctrl.announceClick($index)">
-            <div layout="row" flex>
-              <p flex>Option {{item}}</p>
+    <a href="" drop-down>
+      <i class="fa fa-bell"></i>
+      <i class="bage">9</i>
+
+    </a>
+    <div class="dropdown-menu" ng-init="items = [1,2,3,4,5,6]">
+      <div class="listview">
+        <div class="lv-header">Notification
+          <ul class="actions">
+            <li><a ng-click="items = []" prevent-close><md-icon md-svg-src="img/double-check.svg" ></md-icon></a></li>
+          </ul>
+        </div>
+        <div class="lv-body">
+          <a class="lv-item animated ng-lightSpeedOut" ng-class="'ng-delay'+$index*100" ng-repeat="item in items" ng-href="" >
+            <div class="media">
+              <div class="pull-left"><img class="lv-img-sm" src="/img/user1.jpg"></div>
+              <div class="media-body">
+                <div class="lv-title ">David Belle</div><small class="lv-small ">Cum sociis natoque penatibus et magnis dis parturient montes</small></div>
             </div>
-          </md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <div class="list-footer">
-            <a href=""> View All </a>
-          </div>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
+          </a>
+        </div>
+        <div class="clearfix"></div><a class="lv-footer" href="">View Previous</a></div>
+    </div>
   </li>
   <li></li>
 </ul>
