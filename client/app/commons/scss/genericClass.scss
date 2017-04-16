@@ -1,0 +1,34 @@
+$marginValues:(5,10,15,20,25,30,35,40);
+
+@each $item in $marginValues {
+  .m-#{$item}{
+      margin: #{$item}px;
+  }
+  .m-b-#{$item}{
+      margin-bottom: #{$item}px;
+  }
+  .m-t-#{$item}{
+      margin-top: #{$item}px;
+  }
+  .m-r-#{$item}{
+      margin-right: #{$item}px;
+  }
+  .m-l-#{$item}{
+      margin-left: #{$item}px;
+  }
+  .p-#{$item}{
+      padding: #{$item}px;
+  }
+  .p-b-#{$item}{
+      padding-bottom: #{$item}px;
+  }
+  .p-t-#{$item}{
+      padding-top: #{$item}px;
+  }
+  .p-r-#{$item}{
+      padding-right: #{$item}px;
+  }
+  .p-l-#{$item}{
+      padding-left: #{$item}px;
+  }
+}

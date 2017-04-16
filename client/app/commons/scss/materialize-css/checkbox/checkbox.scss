@@ -1,0 +1,36 @@
+
+
+[type="checkbox"] {
+    display: none;
+    &+label {
+        &:after {
+            border-width: 1px !important;
+        }
+        &:before {
+            border-width: 1px !important;
+        }
+    }
+
+}
+
+
+
+// [type="checkbox"]+label:after {
+//     opacity: 0;
+//     filter: alpha(opacity=0);
+//     transform: scale(0) rotate(80deg);
+//     width: 22px;
+//     height: 9px;
+//     border-bottom: 2px solid #009688;
+//     border-left: 2px solid #009688;
+//     border-bottom-left-radius: 2px;
+//     left: -1px;
+//     top: 1px;
+// }
+// [type="checkbox"]:checked + label:before{
+//     transform: scale(0);
+// }
+// [type="checkbox"]:checked + label:after {
+//     transform: scale(1) rotate(-50deg);
+//     opacity: 1;
+// }

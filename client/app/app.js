@@ -17,5 +17,27 @@ angular.module('app', [
     servicesModule,
     factoriesModule
   ])
+  .constant('$static', {
+    baseUrl: 'http://185.88.153.198'
+  })
+  .run(['$rootScope', '$state', '$stateParams',
+    'authorization', 'principal',
+    function ($rootScope, $state, $stateParams,
+      authorization, principal) {
+      $rootScope.$on('$stateChangeStart',
+        function (event, toState, toStateParams) {
+          // track the state the user wants to go to; 
+          // authorization service needs this
+          $rootScope.toState = toState;
+          $rootScope.toStateParams = toStateParams;
+          // if the principal is resolved, do an 
+          // authorization check immediately. otherwise,
+          // it'll be done when the state it resolved.
+          debugger
+          if (principal.isIdentityResolved())
+            authorization.authorize();
+        });
+    }
+  ])
 
-  .component('app', AppComponent);
+.component('app', AppComponent)

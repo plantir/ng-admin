@@ -1,0 +1,22 @@
+[type="checkbox"] {
+    &+label {
+        padding-left: 0;
+        padding-right: 35px;
+        &:before,
+        &:after {
+            right: 0;
+            left: auto;
+        }
+    }
+    &:checked {
+        &+label {
+            padding-left: 0;
+            padding-right: 35px;
+            &:before,
+            &:after {
+                right: 8px;
+                left: auto;
+            }
+        }
+    }
+}

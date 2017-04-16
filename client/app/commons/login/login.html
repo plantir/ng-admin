@@ -1,0 +1,105 @@
+<div class="lc-block" ng-switch="$ctrl.activeTab">
+
+  <div class="login" ng-switch-when="login">
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-user-circle"></i>
+          <input type="text" id="userName" ng-model="$ctrl.user.userName">
+          <label for="userName">Username</label>
+        </input-container>
+      </div>
+    </div>
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-user-secret"></i>
+          <input type="password" id="Password" ng-model="$ctrl.user.password">
+          <label for="Password">Password</label>
+        </input-container>
+      </div>
+    </div>
+    <div class="checkbox ">
+      <label>
+        <input type="checkbox" id="test5" />
+        <label for="test5">مرا به خاطر بسپار</label>
+    </div>
+
+    <a class="btn-floating btn-large waves-effect waves-light green" ng-click="$ctrl.doLogin($ctrl.user)"><i class="fa fa-long-arrow-left"></i></a>
+
+    <ul class="login-navigation">
+      <li class="red" ng-click="$ctrl.setActiveTab('register')">ثبت نام</li>
+      <li class="orange" ng-click="$ctrl.setActiveTab('resetPassword')">فراموشی رمز عبور</li>
+    </ul>
+  </div>
+
+  <div class="register" ng-switch-when="register">
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-user"></i>
+          <input type="text" id="userName">
+          <label for="userName">Username</label>
+        </input-container>
+      </div>
+    </div>
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="email">
+          <label for="email">Email</label>
+        </input-container>
+      </div>
+    </div>
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-lock"></i>
+          <input type="password" id="Password">
+          <label for="Password">Password</label>
+        </input-container>
+      </div>
+    </div>
+
+    <a class="btn-floating btn-large waves-effect waves-light red"><i class="fa fa-long-arrow-left"></i></a>
+
+    <ul class="login-navigation">
+      <li class="green" ng-click="$ctrl.activeTab ='login'">ورود</li>
+      <li class="orange" ng-click="$ctrl.setActiveTab('resetPassword')">فراموشی رمز عبور</li>
+    </ul>
+  </div>
+
+  <div class="resetPassword" ng-switch-when="resetPassword">
+
+    <p>
+      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+      و مجله در ستون و سطرآنچنان که لازم است.
+    </p>
+
+    <div class="input-group m-b-20">
+      <div class="">
+        <input-container class="input-field has-icon">
+          <i class="fa fa-envelope"></i>
+          <input type="email" id="email">
+          <label for="email">Email</label>
+        </input-container>
+      </div>
+    </div>
+
+
+    <a class="btn-floating btn-large waves-effect waves-light orange"><i class="fa fa-long-arrow-left"></i></a>
+
+    <ul class="login-navigation">
+      <li class="green" ng-click="$ctrl.activeTab ='login'">ورود</li>
+      <li class="red" ng-click="$ctrl.setActiveTab('register')">ثبت نام</li>
+    </ul>
+  </div>
+
+
+</div>

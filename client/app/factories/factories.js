@@ -1,13 +1,12 @@
 import angular from "angular";
-import tokenFactory from './token/token';
+import principal from "./principal/principal";
+import authorization from "./authorization/authorization";
+let factoriesModule = angular.module('app.factories', [
+        principal,
+        authorization
+    ])
 
-let factoriesModule = angular.module('app.factories',[
-    tokenFactory
-])
-.constant('$static',{
-    baseUrl:'http://185.88.153.198'
-})
-.name;
+    .name;
 
 
 export default factoriesModule;

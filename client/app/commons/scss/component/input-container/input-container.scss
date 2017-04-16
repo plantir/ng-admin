@@ -1,0 +1,71 @@
+// input-container
+input-container {
+    position: relative;
+    display: block;
+    input {
+        margin-bottom: 0 !important;
+        &:focus {
+            box-shadow: inherit !important;
+            border-bottom: 1px solid #9e9e9e !important;
+        }
+        &.ng-not-empty {
+            &~label {
+                font-size: .8rem;
+                -webkit-transform: translateY(-140%);
+                transform: translateY(-140%);
+                color: #26a69a;
+            }
+        }
+    }
+    &:after {
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        height: 2px;
+        width: 0;
+        content: "";
+        transition: all;
+        transition-duration: 300ms;
+        background: #26a69a;
+    }
+    &.active,
+    &.has-value {
+        &:after {
+            width: 100%;
+        }
+        label:not(.label-icon) {
+            font-size: .8rem;
+            -webkit-transform: translateY(-140%);
+            transform: translateY(-140%);
+            color: #26a69a;
+        }
+    }
+    label {
+        left: auto;
+        right: 0
+    }
+    &.rtl {
+        direction: rtl;
+        label {
+            left: auto;
+            right: 0
+        }
+    }
+    &.ltr {
+        direction: ltr;
+        label {
+            right: auto;
+            left: 0
+        }
+    }
+    &.has-icon {
+        margin-right: 3rem;
+        i,
+        .icon {
+            position: absolute;
+            right: -2.5rem;
+            font-size: 2rem;
+            top: 0.5rem;
+        }
+    }
+}
