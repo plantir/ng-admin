@@ -11,20 +11,27 @@
         <i class="fa fa-caret-down"></i>
       </div>
     </a>
-    <ul class="main-menu" style="display: block;">
+    <ul class="main-menu">
       <li>
         <a href=""><i class="fa fa-user"></i> View Profile</a>
       </li>
       <li><a href=""><i class="fa fa-user-secret"></i> Privacy Settings</a></li>
       <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
-      <li><a href=""><i class="fa fa-sign-out"></i> Logout</a></li>
+      <li><a href="" ng-click="$ctrl.logOut()"><i class="fa fa-sign-out"></i> Logout</a></li>
     </ul>
   </div>
   <ul class="main-menu">
-    <li class="sub-menu">
+    <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
       <a toggle-submenu><i class="fa fa-home"></i>محتوا</a>
-       <ul>
-        <li><a>محتوای اصلی</a></li>
+      <ul>
+        <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
+          <a toggle-submenu  >محتوای اصلی</a>
+          <ul>
+            <li><a ui-sref="lesson" ui-sref-active="active">lesson</a></li>
+            <li><a href="">box</a></li>
+            <li><a href="">pixel</a></li>
+          </ul>
+        </li>
         <li><a>تعیین سطح</a></li>
         <li><a>لغات</a></li>
       </ul>

@@ -3,9 +3,16 @@
 @import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 @import "~font-awesome/scss/font-awesome.scss";
 @import "~angular-loading-bar/src/loading-bar.css";
+@import "~ng-table/src/styles/ng-table";
+@import "~angular-material/modules/js/dialog/dialog.css";
 @import 'scss/angular-material/angular-material'; //overWrite angular material
 @import 'scss/angular-material/RTL/angular-material.rtl'; //overWrite angular material
 @import 'scss/materialize-css/materialize'; //overWrite angular material
+@import 'scss/font-icon/material-design-iconic-font';
+@import 'scss/ngTable/ngTable';
+
+
+
 @import 'scss/component/component';
 @import 'scss/genericClass';
 @import 'scss/animate';
@@ -17,15 +24,25 @@
 @import './topMenu/topMenu';
 @import './fourZeroFour/fourZeroFour';
 @import './login/login';
+@import './loading/loading';
 
+@font-face {
+  font-family: 'Material-Design-Iconic-Font';
+  src: url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff2?v=2.2.0') format('woff2'), url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff?v=2.2.0') format('woff'), url('#{$material-icon-font-path}/Material-Design-Iconic-Font.ttf?v=2.2.0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
     font-family: IRANSans;
     font-style: normal;
     font-weight: bold;
     src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Bold.eot');
-    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('#{$iranSans-font-path}/woff/IRANSansWeb_Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Bold.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Bold.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('#{$iranSans-font-path}/woff/IRANSansWeb_Bold.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('#{$iranSans-font-path}/ttf/IRANSansWeb_Bold.ttf') format('truetype');
 }
 
@@ -34,9 +51,12 @@
     font-style: normal;
     font-weight: 500;
     src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Medium.eot');
-    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('#{$iranSans-font-path}/woff/IRANSansWeb_Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Medium.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Medium.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('#{$iranSans-font-path}/woff/IRANSansWeb_Medium.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('#{$iranSans-font-path}/ttf/IRANSansWeb_Medium.ttf') format('truetype');
 }
 
@@ -45,9 +65,12 @@
     font-style: normal;
     font-weight: 300;
     src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Light.eot');
-    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('#{$iranSans-font-path}/woff/IRANSansWeb_Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_Light.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('#{$iranSans-font-path}/woff2/IRANSansWeb_Light.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('#{$iranSans-font-path}/woff/IRANSansWeb_Light.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('#{$iranSans-font-path}/ttf/IRANSansWeb_Light.ttf') format('truetype');
 }
 
@@ -56,9 +79,12 @@
     font-style: normal;
     font-weight: 200;
     src: url('#{$iranSans-font-path}/eot/IRANSansWeb_UltraLight.eot');
-    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('#{$iranSans-font-path}/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('#{$iranSans-font-path}/woff/IRANSansWeb_UltraLight.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    src: url('#{$iranSans-font-path}/eot/IRANSansWeb_UltraLight.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('#{$iranSans-font-path}/woff2/IRANSansWeb_UltraLight.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('#{$iranSans-font-path}/woff/IRANSansWeb_UltraLight.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('#{$iranSans-font-path}/ttf/IRANSansWeb_UltraLight.ttf') format('truetype');
 }
 
@@ -67,16 +93,18 @@
     font-style: normal;
     font-weight: normal;
     src: url('#{$iranSans-font-path}/eot/IRANSansWeb.eot');
-    src: url('#{$iranSans-font-path}/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
-    url('#{$iranSans-font-path}/woff2/IRANSansWeb.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
-    url('#{$iranSans-font-path}/woff/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    src: url('#{$iranSans-font-path}/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+    /* IE6-8 */
+    url('#{$iranSans-font-path}/woff2/IRANSansWeb.woff2') format('woff2'),
+    /* FF39+,Chrome36+, Opera24+*/
+    url('#{$iranSans-font-path}/woff/IRANSansWeb.woff') format('woff'),
+    /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('#{$iranSans-font-path}/ttf/IRANSansWeb.ttf') format('truetype');
 }
 
 .rtl {
     direction: rtl;
-    font-family: IranSans,tahoma;
-
+    font-family: IranSans, tahoma;
 }
 
 a {
@@ -118,16 +146,29 @@ a {
     ul {
         padding: 0;
         margin: 0;
+        display: none;
         >li {
             >a {
                 color: #7f7f7f;
                 padding: 8px 50px 8px 20px;
                 font-weight: 500;
                 display: block;
+                position: relative;
+                &:hover,
+                &.active {
+                    color: #000;
+                }
             }
             &:first-child {
                 >a {
                     padding-top: 16px;
+                }
+            }
+            &.sub-menu {
+                ul {
+                    font-size: 12px;
+                    margin: 10px 0;
+                    background-color: #f7f7f7;
                 }
             }
         }
@@ -155,6 +196,11 @@ a {
         >a:after {
             content: "\f068";
             transform: scale(1);
+        }
+    }
+    &.active {
+        &>ul {
+            display: block;
         }
     }
 }

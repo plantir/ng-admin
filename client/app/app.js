@@ -1,16 +1,16 @@
 import angular from 'angular';
-import configModule from './config/config';
 import componentsModule from './components/components';
 import directivesModule from './directives/directives';
 import factoriesModule from './factories/factories';
 import filtersModule from './filters/filters';
 import servicesModule from './services/services';
 import commosModule from './commons/commons';
+import configModule from './config/config';
 import AppComponent from './app.component';
 import "./app.scss";
 angular.module('app', [
-    configModule,
     commosModule,
+    configModule,
     directivesModule,
     componentsModule,
     filtersModule,

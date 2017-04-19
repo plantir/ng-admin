@@ -19,6 +19,7 @@ input-container {
     }
     &:after {
         position: absolute;
+        right: 0;
         z-index: 3;
         bottom: 0;
         height: 2px;

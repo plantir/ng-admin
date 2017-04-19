@@ -8,37 +8,47 @@ let authorizationFactory = angular.module('authorizationFactory', [
     .name;
 
 
-function factory($rootScope, $state, principal) {
+function factory($rootScope, $state, principal, $http, $token) {
     "ngInject";
     return {
         authorize: function () {
-            return principal.identity()
-                .then(function () {
-                    var isAuthenticated = principal.isAuthenticated();
+            // return principal.identity()
+            //     .then(function () {
+            //         var isAuthenticated = principal.isAuthenticated();
 
-                    if ($rootScope.toState.data.roles &&
-                        $rootScope.toState
-                        .data.roles.length > 0 &&
-                        !principal.isInAnyRole(
-                            $rootScope.toState.data.roles)) {
-                        if (isAuthenticated) {
-                            // user is signed in but not
-                            // authorized for desired state
-                            $state.go('accessdenied');
-                        } else {
-                            // user is not authenticated. Stow
-                            // the state they wanted before you
-                            // send them to the sign-in state, so
-                            // you can return them when you're done
-                            $rootScope.returnToState = $rootScope.toState;
-                            $rootScope.returnToStateParams = $rootScope.toStateParams;
+            //         if ($rootScope.toState.data.roles &&
+            //             $rootScope.toState
+            //             .data.roles.length > 0 &&
+            //             !principal.isInAnyRole(
+            //                 $rootScope.toState.data.roles)) {
+            //             if (isAuthenticated) {
+            //                 // user is signed in but not
+            //                 // authorized for desired state
+            //                 $state.go('accessdenied');
+            //             } else {
+            //                 // user is not authenticated. Stow
+            //                 // the state they wanted before you
+            //                 // send them to the sign-in state, so
+            //                 // you can return them when you're done
+            //                 $rootScope.returnToState = $rootScope.toState;
+            //                 $rootScope.returnToStateParams = $rootScope.toStateParams;
 
-                            // now, send them to the signin state
-                            // so they can log in
-                            $state.go('signin');
-                        }
-                    }
-                });
+            //                 // now, send them to the signin state
+            //                 // so they can log in
+            //                 $state.go('signin');
+            //             }
+            //         }
+            //     });
+            var a = localStorage.getItem('token')
+            if (a) {
+                $token.Refresh(a);
+            }
+            if (!a) {
+                $state.go('login')
+            }
+
+
+
         }
     };
 }

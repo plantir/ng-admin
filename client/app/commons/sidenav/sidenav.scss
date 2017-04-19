@@ -2,7 +2,8 @@
 sidenav {
   color: red;
   .mCSB_inside>.mCSB_container {
-    margin-right: 0;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
   .mCSB_scrollTools {
     left: 0;
@@ -24,14 +25,21 @@ sidenav {
     list-style: none;
     padding-left: 0;
     margin: 20px 0 0 0;
-    li {
-      & a {
+    padding: 0;
+    >li {
+      a{
+        text-align: right;
+      }
+      &>a {
         padding: 14px 52px 14px 20px;
         display: block;
         color: #4C4C4C;
         font-weight: 500;
         position: relative;
-        text-align: right;
+        &:hover {
+          color: #262626;
+          background-color: #F4F4F4;
+        }
         &>i {
           position: absolute;
           right: 16px;
@@ -42,8 +50,7 @@ sidenav {
           padding: 13px 0;
         }
       }
-      &.active,
-      &:hover {
+      &.active {
         &>a {
           color: #262626;
           background-color: #F4F4F4;

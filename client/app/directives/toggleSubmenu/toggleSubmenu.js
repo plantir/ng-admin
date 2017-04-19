@@ -15,7 +15,6 @@ function directive() {
     return directive;
 
     function link(scope, element, attrs) {
-        $(element).siblings("ul").hide();
         $(element).on('click', () => {
             $(element).parent().toggleClass('toggled');
             $(element).next().slideToggle(200);

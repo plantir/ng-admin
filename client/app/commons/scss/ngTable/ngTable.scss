@@ -1,0 +1,19 @@
+[ng-table]{
+    .action{
+        .btn{
+            padding: 0 1rem;
+            display: inline-flex;
+        }
+    }
+    &.centered{
+        input{
+            text-align: center;
+        }
+    }
+}
+.ng-table-pager{
+    ul.pagination {
+        text-align: center;
+        margin-top:20px;
+    }
+}

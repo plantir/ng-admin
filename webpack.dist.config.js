@@ -3,16 +3,13 @@ var path = require('path');
 var config = require('./webpack.config');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-config.devtool = '';
+// config.devtool = '';
 config.module.rules = [{
     test: /\.js$/,
     exclude: [/app\/lib/, /node_modules/],
-    use: {
+    use: [{
       loader: 'babel-loader',
-      options: {
-        presets: ['es2015']
-      }
-    }
+    }]
   },
   {
     test: /\.(png|jpg|svg)$/,
@@ -20,6 +17,15 @@ config.module.rules = [{
   }, {
     test: /\.(woff|woff2|eot|ttf)$/,
     loader: 'url-loader?limit=8192&publicPath=../&name=css/fonts/[name].[ext]'
+  },
+  
+  {
+    test: /jquery-mousewheel/,
+    loader: "imports-loader?define=>false&this=>window"
+  },
+  {
+    test: /malihu-custom-scrollbar-plugin/,
+    loader: "imports-loader?define=>false&this=>window"
   },
   // { test: /\.woff2?$/, loader: "url?limit=10000&minetype=application/font-woff" },
   {
@@ -33,7 +39,7 @@ config.module.rules = [{
           loader: "css-loader",
           options: {
             sourceMap: true,
-            // minimize: true
+            minimize: true
           }
         }, {
           loader: "sass-loader",
