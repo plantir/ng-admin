@@ -1,59 +1,56 @@
-<md-sidenav custom-scroll-bar class="md-sidenav-right" md-component-id="menu" md-disable-backdrop md-whiteframe="4">
+<md-sidenav class="md-sidenav-right" md-component-id="menu" md-disable-backdrop md-whiteframe="4">
 
+  <div custom-scroll-bar>
 
-  <div class="profile-menu">
-    <a toggle-submenu>
-      <div class="profile-pic">
-        <img src="/img/user1.jpg" alt="">
-      </div>
-      <div class="profile-info">
-        Armin Kheirkhahan
-        <i class="fa fa-caret-down"></i>
-      </div>
-    </a>
+    <div class="profile-menu">
+      <a toggle-submenu>
+        <div class="profile-pic">
+          <img src="/img/user1.jpg" alt="">
+        </div>
+        <div class="profile-info">
+          Armin Kheirkhahan
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </a>
+      <ul class="main-menu">
+        <li>
+          <a href=""><i class="fa fa-user"></i> View Profile</a>
+        </li>
+        <li><a href=""><i class="fa fa-user-secret"></i> Privacy Settings</a></li>
+        <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="" ng-click="$ctrl.logOut()"><i class="fa fa-sign-out"></i> Logout</a></li>
+      </ul>
+    </div>
     <ul class="main-menu">
-      <li>
-        <a href=""><i class="fa fa-user"></i> View Profile</a>
+      <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
+        <a toggle-submenu><i class="fa fa-home"></i>محتوا</a>
+        <ul>
+          <li ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
+            <a ui-sref="mainContent">محتوای اصلی</a>
+          </li>
+          <li><a>تعیین سطح</a></li>
+          <li><a>لغات</a></li>
+        </ul>
       </li>
-      <li><a href=""><i class="fa fa-user-secret"></i> Privacy Settings</a></li>
-      <li><a href=""><i class="fa fa-cog"></i> Settings</a></li>
-      <li><a href="" ng-click="$ctrl.logOut()"><i class="fa fa-sign-out"></i> Logout</a></li>
+      <li class="sub-menu">
+        <a toggle-submenu><i class="fa fa-home"></i>اعداد</a>
+        <ul>
+          <li><a>فرمول های قوت</a></li>
+          <li><a>لول</a></li>
+          <li><a>گرید</a></li>
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a toggle-submenu><i class="fa fa-home"></i>اچیومنت ها</a>
+        <ul>
+          <li><a>اچیومنت ها</a></li>
+          <li><a>نشان ها</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="">آپلود</a>
+      </li>
     </ul>
   </div>
-  <ul class="main-menu">
-    <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
-      <a toggle-submenu><i class="fa fa-home"></i>محتوا</a>
-      <ul>
-        <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
-          <a toggle-submenu  >محتوای اصلی</a>
-          <ul>
-            <li><a ui-sref="lesson" ui-sref-active="active">lesson</a></li>
-            <li><a href="">box</a></li>
-            <li><a href="">pixel</a></li>
-          </ul>
-        </li>
-        <li><a>تعیین سطح</a></li>
-        <li><a>لغات</a></li>
-      </ul>
-    </li>
-    <li class="sub-menu">
-      <a toggle-submenu><i class="fa fa-home"></i>اعداد</a>
-      <ul>
-        <li><a>فرمول های قوت</a></li>
-        <li><a>لول</a></li>
-        <li><a>گرید</a></li>
-      </ul>
-    </li>
-    <li class="sub-menu">
-      <a toggle-submenu><i class="fa fa-home"></i>اچیومنت ها</a>
-      <ul>
-        <li><a>اچیومنت ها</a></li>
-        <li><a>نشان ها</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="">آپلود</a>
-    </li>
-  </ul>
 
 </md-sidenav>

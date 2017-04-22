@@ -30,9 +30,7 @@ function factory($resource, $static) {
         list: {
             method: 'POST',
             url: $static.baseUrl + '/lesson/list',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            }
+         
         }
     });
 }

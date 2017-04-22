@@ -9,7 +9,7 @@ const configModule = angular.module('app.config', [
 // appConfig.$inject =["$urlRouterProvider"]
 function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogProvider) {
     "ngInject";
-    // $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.headers.common = {'Authorization': 'Bearer ' + localStorage.getItem('token')};
     $stateProvider
         .state('site', {
             'abstract': true,
@@ -25,9 +25,10 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
 
         .state('home', {
             parent: 'site',
-            url: '/',
+            url: '',
             template: 'home'
         })
+        
         .state('login', {
             url: '/login',
             component: 'login'
@@ -39,7 +40,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
             component: 'fourZeroFour'
         })
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('404');
     $mdDialogProvider.addPreset('confirm', {
         methods: ['title', 'textContent', 'ok', 'cancel', 'doneTitle', 'doneTextContent', 'doneOk', 'doneFN'],
         options: function () {

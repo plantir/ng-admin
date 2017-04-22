@@ -1,2 +1,85 @@
-<div ui-view>
+<div>
+    <div class="row">
+
+        <div class="col s4 ">
+
+            <div class="flex flex-row flex-align-start-center header ltr">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Id</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('lessons')">
+                <table class="ltr highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+
+
+                    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="{selected:$ctrl.$selected.lesson == lesson}" ng-click="$ctrl.selectLesson(lesson)">
+                        <td>{{$index+1}}</td>
+                        <td>{{lesson.code}}</td>
+                        <td>{{lesson.id}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col s4 ">
+
+            <div class="flex flex-row flex-align-start-center header ltr">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Id</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('boxes')">
+                <table class="ltr highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+
+                    <tr ng-repeat="box in $ctrl.boxes.data" ng-class="{selected:$ctrl.$selected.box == box}" ng-click="$ctrl.selectBox(box)">
+                        <td>{{$index+1}}</td>
+                        <td>{{box.code}}</td>
+                        <td>{{box.id}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col s4">
+
+            <div class="flex flex-row flex-align-start-center header ltr">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Id</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('pixels')">
+                <table class="ltr highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+                    <tbody>
+
+                        <tr ng-repeat="pixel in $ctrl.pixels.data" ng-class="{selected:$ctrl.$selected.pixel == pixel}">
+                            <td>{{$index+1}}</td>
+                            <td>{{pixel.code}}</td>
+                            <td>{{pixel.id}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
 </div>

@@ -41,7 +41,11 @@ function factory($rootScope, $state, principal, $http, $token) {
             //     });
             var a = localStorage.getItem('token')
             if (a) {
-                $token.Refresh(a);
+                $token.Refresh(a).then(() => {
+
+                }, (err) => {
+                    $state.go('login')
+                })
             }
             if (!a) {
                 $state.go('login')

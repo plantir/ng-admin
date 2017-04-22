@@ -1,5 +1,8 @@
 @import '~angular-material/modules/js/sidenav/sidenav.css';
 sidenav {
+  md-sidenav > div{
+    height: 100%;
+  }
   color: red;
   .mCSB_inside>.mCSB_container {
     margin-right: 0 !important;

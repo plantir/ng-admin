@@ -10,9 +10,6 @@
 @import 'scss/materialize-css/materialize'; //overWrite angular material
 @import 'scss/font-icon/material-design-iconic-font';
 @import 'scss/ngTable/ngTable';
-
-
-
 @import 'scss/component/component';
 @import 'scss/genericClass';
 @import 'scss/animate';
@@ -25,13 +22,15 @@
 @import './fourZeroFour/fourZeroFour';
 @import './login/login';
 @import './loading/loading';
-
 @font-face {
-  font-family: 'Material-Design-Iconic-Font';
-  src: url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff2?v=2.2.0') format('woff2'), url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff?v=2.2.0') format('woff'), url('#{$material-icon-font-path}/Material-Design-Iconic-Font.ttf?v=2.2.0') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Material-Design-Iconic-Font';
+    src: url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff2?v=2.2.0') format('woff2'),
+    url('#{$material-icon-font-path}/Material-Design-Iconic-Font.woff?v=2.2.0') format('woff'),
+    url('#{$material-icon-font-path}/Material-Design-Iconic-Font.ttf?v=2.2.0') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
     font-family: IRANSans;
     font-style: normal;
@@ -105,6 +104,10 @@
 .rtl {
     direction: rtl;
     font-family: IranSans, tahoma;
+}
+
+.ltr {
+    direction: ltr;
 }
 
 a {
@@ -221,4 +224,39 @@ a {
 // change auto fill google chrome
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+//  flex grid
+.flex {
+    display: flex;
+    &.flex-row {
+        flex-direction: row;
+    }
+    &.flex-align-center-center {
+        align-content: center;
+        justify-content: center;
+    }
+    &.flex-align-start-center {
+        align-content: center;
+        justify-content: flex-start;
+    }
+    &.flex-align-end-center {
+        align-content: center;
+        justify-content: flex-end;
+    }
+    &.flex-align-space-around-center {
+        align-content: center;
+        justify-content: space-around;
+    }
+    &.flex-align-space-between-center {
+        align-content: center;
+        justify-content: space-between;
+    }
+}
+$flexItems:(5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100);
+@each $item in $flexItems {
+    .flex-#{$item}{
+        flex:#{$item}
+    }
 }
