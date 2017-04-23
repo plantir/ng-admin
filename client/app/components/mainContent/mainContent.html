@@ -123,7 +123,7 @@
                     </colgroup>
                     <tbody>
 
-                        <tr ng-repeat="pixel in $ctrl.pixels.data" "  ng-class="[{selected:$ctrl.$selected.pixel == pixel},pixel.$class%15]" ng-click="$ctrl.selectPixel(pixel)">
+                        <tr ng-repeat="pixel in $ctrl.pixels.data" ng-class="[{selected:$ctrl.$selected.pixel == pixel},pixel.$class]" ng-click="$ctrl.selectPixel(pixel)">
                             <td>{{$index+1}}</td>
                             <td>{{pixel.code}}</td>
                             <td>{{pixel.id}}</td>
