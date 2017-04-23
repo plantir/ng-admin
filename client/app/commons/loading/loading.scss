@@ -1,3 +1,5 @@
+$innerColor:color('light-blue','base');
+$outerColor:color('deep-orange','darken-3');
 loading {
   position: absolute;
   width: 100%;
@@ -8,7 +10,7 @@ loading {
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.7);
-  z-index: 999;
+  z-index: 9;
   .loading {
     display: flex;
     justify-content: center;
@@ -22,19 +24,11 @@ loading {
       margin: 0 auto;
       width: 80px;
       height: 80px;
-      border-top: 7px solid #06F;
+      border-top: 7px solid $outerColor;
       border-bottom: 7px solid transparent;
       border-left: 7px solid transparent;
       border-right: 7px solid 06F;
       border-radius: 80px;
-      -moz-border-radius: 80px;
-      -webkit-border-radius: 80px;
-      -ms-border-radius: 80px;
-      -o-border-radius: 80px;
-      -webkit-animation: cwSpin 1s linear .2s infinite;
-      -moz-animation: cwSpin .666s linear .2s infinite;
-      -o-animation: cwSpin .666s linear .2s infinite;
-      -ms-animation: cwSpin .666s linear .2s infinite;
       animation: cwSpin .666s linear .2s infinite;
     }
     .innerCircle {
@@ -43,34 +37,18 @@ loading {
       margin: 0;
       width: 40px;
       height: 40px;
-      border-top: 7px solid #06F;
-      border-bottom: 7px solid #06F;
+      border-top: 7px solid $innerColor;
+      border-bottom: 7px solid $innerColor;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
       border-radius: 40px;
-      -moz-border-radius: 40px;
-      -webkit-border-radius: 40px;
-      -ms-border-radius: 40px;
-      -o-border-radius: 40px;
-      box-shadow: 0 0 20px #06F;
-      -webkit-box-shadow: 0 0 20px #06F;
-      -moz-box-shadow: 0 0 20px #06F;
-      -ms-box-shadow: 0 0 20px #06F;
-      -o-box-shadow: 0 0 20px #06F;
-      -webkit-animation: ccwSpin .555s linear .2s infinite;
-      -moz-animation: ccwSpin .555s linear .2s infinite;
-      -o-animation: ccwSpin .555s linear .2s infinite;
-      -ms-animation: ccwSpin .555s linear .2s infinite;
+      box-shadow: 0 0 20px $innerColor;
       animation: ccwSpin .555s linear .2s infinite;
       border-top: 7px solid transparent;
-      border-bottom: 7px solid #06F;
-      border-left: 7px solid #06F;
+      border-bottom: 7px solid $innerColor;
+      border-left: 7px solid $innerColor;
       border-right: 7px solid transparent;
       box-shadow: none;
-      -moz-box-shadow: none;
-      -ms-box-shadow: none;
-      -o-box-shadow: none;
-      -webkit-box-shadow: none;
     }
   }
 }

@@ -18,7 +18,10 @@ function factory($resource, $static) {
         },
         delete: {
             method: 'DELETE',
-            url: $static.baseUrl + '/lesson/delete'
+            url: $static.baseUrl + '/lesson/delete',
+            params: {
+                id: '@id'
+            }
         },
         edit: {
             method: 'POST',
@@ -30,6 +33,9 @@ function factory($resource, $static) {
         list: {
             method: 'POST',
             url: $static.baseUrl + '/lesson/list',
+            params: {
+                id: '@id'
+            }
          
         }
     });

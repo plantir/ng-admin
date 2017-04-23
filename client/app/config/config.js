@@ -81,6 +81,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
 
 
                     this.done = () => {
+                        console.log(typeof this.doneFN);
                         if (this.doneFN && typeof this.doneFN === 'function') {
 
                             this.loading = true;
