@@ -29,6 +29,7 @@ class MainContentController {
     this.boxes.$loading = true;
     this.$box.list((res) => {
       this.boxes = res;
+      this.boxes.pageNumber = 1;
     })
 
   }
@@ -102,10 +103,44 @@ class MainContentController {
   onScroll(type) {
     switch (type) {
       case "lessons":
+        if (this.lessons.noMore) {
+          break;
+        }
 
+        this.lessons.pageNumber++;
+        this.lessons.$loading = true;
+        this.$lesson.list({
+          pageNumber: this.lessons.pageNumber
+        }, {
+
+        }, (res) => {
+          if (res.data.length < 10) {
+            this.lessons.noMore = true;
+          }
+          this.lessons.data = this.lessons.data.concat(res.data)
+          this.lessons.$loading = false;
+
+        })
         break;
       case "boxes":
+        if (this.boxes.noMore) {
+          break;
+        }
 
+        this.boxes.pageNumber++;
+        this.boxes.$loading = true;
+        this.$box.list({
+          pageNumber: this.boxes.pageNumber
+        }, {
+
+        }, (res) => {
+          if (res.data.length < 10) {
+            this.boxes.noMore = true;
+          }
+          this.boxes.data = this.boxes.data.concat(res.data)
+          this.boxes.$loading = false;
+
+        })
         break;
       case "pixels":
         if (this.pixels.noMore) {
@@ -281,6 +316,8 @@ class MainContentController {
     this.lessons.$loading = true;
     this.$lesson.list((res) => {
       this.lessons = res;
+      this.lessons.pageNumber = 1;
+      
     })
   }
 
