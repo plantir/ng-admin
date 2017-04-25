@@ -7,8 +7,8 @@ main-content {
       min-height: 200px;
     }
     .mCSB_scrollTools {
-      right: -7px !important;
-      left: auto !important;
+      left: -7px !important;
+      right: auto !important;
     }
   }
   .table-container {
@@ -43,10 +43,10 @@ main-content {
     td:last-child {
       position: relative;
       &:after {
-        content: '\f2f6';
+        content: '\f2fA';
         font: normal normal normal 28px 'Material-Design-Iconic-Font';
         position: absolute;
-        right: 11px;
+        left: 11px;
         vertical-align: middle;
         top: calc(50% - 16px);
         /* bottom: 0; */

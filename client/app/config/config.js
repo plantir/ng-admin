@@ -47,7 +47,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
             return {
                 template: `
                 <md-dialog class="confirm-dialog">
-                    <div ng-if="!dialog.$done">
+                    <div ng-if="!dialog.$done && !dialog.$error">
                         <div class="warning pulseWarning"> 
                             <span class="body pulseWarningIns"></span> 
                             <span class="dot pulseWarningIns"></span> 
@@ -55,8 +55,8 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                         <h2>{{ dialog.title }}</h2>
                         <p>{{ dialog.textContent }}</p>
                         <div>
-                            <button class="cancel btn " ng-click="dialog.abort()" tabindex="2">{{ dialog.cancel }}</button> 
                             <button class="confirm btn" ng-click="dialog.done()" tabindex="1">{{ dialog.ok }}</button>
+                            <button class="cancel btn " ng-click="dialog.abort()" tabindex="2">{{ dialog.cancel }}</button> 
                         </div>
                     </div>   
                     <div ng-if="dialog.$done">
@@ -72,16 +72,36 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                             <button class="done btn" ng-click="dialog.hide()" tabindex="1">{{ dialog.doneOk }}</button>
                         </div>
                     </div>
+                    <div ng-if="dialog.$error">
+                        <div class="error pulseError"> 
+                            <span class="body pulseErrorIns"></span> 
+                            <span class="dot pulseErrorIns"></span> 
+                        </div>
+                        <h2>{{ dialog.errTitle }}</h2>
+                        <p>{{ dialog.errTextContent }}</p>
+                        <div>
+                            <button class="confirm btn" ng-click="dialog.done()" tabindex="1">{{ dialog.errRetry }}</button>
+                            <button class="cancel btn " ng-click="dialog.abort()" tabindex="2">{{ dialog.errCancel }}</button> 
+                        </div>
+                    </div>
                     <loading ng-if="dialog.loading"></loading> 
                 </md-dialog>`,
                 controller: function mdDialogCtrl($mdDialog) {
                     "ngInject";
                     this.$done = false;
-
-
+                    this.ok = this.ok || 'بله انجام بده';
+                    this.title = this.title || 'آیا از انجام این کار مطمئن هستید؟';
+                    this.textContent = this.textContent || 'این عملیات غیر قابل بازگشت می باشد';
+                    this.doneOk = this.doneOk || 'انجام شد';
+                    this.doneTitle = this.doneTitle || 'انجام شد';
+                    this.doneTextContent = this.doneTextContent || 'در خواست شما با موفقیت انجام شد';
+                    this.errTitle = this.errTitle || 'خطایی رخ داده است.';
+                    this.errTextContent = this.errTextContent || 'در انجام عملیات مشکلی پیش آمده است';
+                    this.cancel = this.cancel || 'منصرف شدم';
+                    this.errCancel = this.errCancel || 'منصرف شدم';
+                    this.errRetry = this.errRetry || 'دوباره سعی کن';
 
                     this.done = () => {
-                        console.log(typeof this.doneFN);
                         if (this.doneFN && typeof this.doneFN === 'function') {
 
                             this.loading = true;
@@ -89,9 +109,11 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                                 this.loading = false;
                                 this.$done = true;
 
-                            }, () => {
+                            }, (err) => {
                                 this.loading = false;
-                                this.$err = true;
+                                this.$error = true;
+                                console.error(err);
+                                
                             })
                         }
                         else{

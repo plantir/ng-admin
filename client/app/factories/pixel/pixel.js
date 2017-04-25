@@ -17,7 +17,8 @@ function factory ($resource,$static) {
         },
         delete:{
             method:'DELETE',
-            url:$static.baseUrl + '/pixel/delete'
+            url:$static.baseUrl + '/pixel/delete',
+            params:{id:'@id'}
         },
         edit:{
             method:'POST',
