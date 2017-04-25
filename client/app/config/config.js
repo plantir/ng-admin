@@ -7,9 +7,16 @@ const configModule = angular.module('app.config', [
     .config(appConfig)
     .name;
 // appConfig.$inject =["$urlRouterProvider"]
-function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogProvider) {
+function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogProvider, $mdThemingProvider, $mdToastProvider) {
     "ngInject";
-    $httpProvider.defaults.headers.common = {'Authorization': 'Bearer ' + localStorage.getItem('token')};
+    $mdThemingProvider.theme('default')
+        .primaryPalette('light-blue')
+        .accentPalette('deep-orange');
+    $httpProvider.defaults.headers.common = {
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+        "content-type": "application/x-www-form-urlencoded"
+
+    };
     $stateProvider
         .state('site', {
             'abstract': true,
@@ -28,7 +35,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
             url: '',
             template: 'home'
         })
-        
+
         .state('login', {
             url: '/login',
             component: 'login'
@@ -113,10 +120,9 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                                 this.loading = false;
                                 this.$error = true;
                                 console.error(err);
-                                
+
                             })
-                        }
-                        else{
+                        } else {
                             this.hide(true)
                         }
                     };
@@ -137,6 +143,31 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                 bindToController: true,
                 clickOutsideToClose: true,
                 escapeToClose: true
+            };
+        }
+    });
+    $mdToastProvider.addPreset('notify', {
+        methods: ['textContent','parent','position','hideDelay'],
+        options: function () {
+            return {
+                template: `
+                    <md-toast class="animated ng-zoomOut ng-flipInX">
+                        <div class="md-toast-content orange darken-3 ">
+                            {{toast.textContent}}
+                            <i class="zmdi zmdi-close" style="position:absolute;left:15px;top:calc(50% - 5px)" ng-click="toast.close()"></i>
+                        </div>
+
+                    </md-toast>`,
+                controllerAs: 'toast',
+                controller:function mdToastCtrl($mdToast){
+                    "ngInject"
+
+                    this.close = ()=>{
+                        console.log("object");
+                        $mdToast.hide()
+                    }
+                },
+                bindToController: true
             };
         }
     });

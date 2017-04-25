@@ -1,5 +1,5 @@
 class MainContentController {
-  constructor($lesson, $box, $pixel, $timeout, $mdDialog, $q) {
+  constructor($lesson, $box, $pixel, $timeout, $mdDialog, $q, $document, $httpParamSerializerJQLike, $mdToast) {
     "ngInject";
     this.$lesson = $lesson;
     this.$box = $box;
@@ -7,10 +7,15 @@ class MainContentController {
     this.$timeout = $timeout;
     this.$mdDialog = $mdDialog;
     this.$q = $q;
+    this.$document = $document;
+    this.$httpParamSerializerJQLike = $httpParamSerializerJQLike;
+    this.$mdToast = $mdToast;
     this.$selected = {};
     this.lessons = {};
     this.boxes = {};
     this.pixels = {};
+    this.pathes = [1, 2, 3];
+
   }
 
   selectLesson(lesson, index) {
@@ -28,6 +33,31 @@ class MainContentController {
 
   }
 
+  saveLesson(lesson) {
+    this.$edit.loading = true;
+    var serializeLesson = this.$httpParamSerializerJQLike(lesson)
+    if (lesson.id) {
+      this.$lesson.edit(serializeLesson, (res) => {
+        this.$edit.mode = false
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.lessons.data[lesson.$index] = lesson;
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    } else {
+      this.$lesson.create(serializeLesson, (res) => {
+        this.$edit.mode = false
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.lessons.data.push(res.data)
+        this.$edit.model = res.data;
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    }
+  }
+
   selectBox(box, index) {
     this.$selected.pixel = null;
     box.$index = index;
@@ -37,6 +67,31 @@ class MainContentController {
       this.pixels = res;
       this.pixels.pageNumber = 1;
     })
+  }
+
+  saveBox(box) {
+    this.$edit.loading = true;
+    var serializebox = this.$httpParamSerializerJQLike(box)
+    if (box.id) {
+      this.$box.edit(serializebox, (res) => {
+        this.$edit.mode = false
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.boxes.data[box.$index] = box;
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    } else {
+      this.$box.create(serializebox, (res) => {
+        this.$edit.mode = false
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.$edit.model = res.data;
+        this.boxes.data.push(res.data)
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    }
   }
 
   selectPixel(pixel, index) {
@@ -160,6 +215,7 @@ class MainContentController {
       console.log("cancel");
     });
   }
+
   edit(type) {
     let model
     switch (type) {
@@ -173,18 +229,74 @@ class MainContentController {
         model = angular.copy(this.$selected.pixel);
         break;
     }
-    console.log(model);
     this.$edit = {
+      mode: true,
       type: type,
       model: model
     }
+    this.$onFromInit()
   }
+
+  add(type) {
+    let model;
+
+    switch (type) {
+      case 'lesson':
+        model = {
+          isActive: false,
+        }
+        break;
+      case 'box':
+        model = {
+          lessonId: this.$selected.lesson.id,
+          isActive: false,
+          isReview: false,
+          isTestOut: false
+        }
+        break;
+      case 'pixel':
+        model = {
+          lessonId: this.$selected.lesson.id,
+          boxId: this.$selected.box.id,
+          isActive: false,
+        }
+        break;
+    }
+    this.$edit = {
+      mode: true,
+      type: type,
+      model: model
+    }
+    this.$onFromInit()
+
+  }
+
+  cancelEdit() {
+    this.$edit = null;
+  }
+
   $onInit() {
     this.lessons.$loading = true;
     this.$lesson.list((res) => {
       this.lessons = res;
     })
+  }
 
+  $notify(text, hideDelay, pinTo) {
+    pinTo = pinTo || 'right top';
+    hideDelay = hideDelay || 1000;
+    this.$mdToast.show(
+      this.$mdToast.notify()
+      .textContent(text)
+      .position(pinTo)
+      .hideDelay(hideDelay)
+      .parent(angular.element(document.getElementById('main-content')))
+    )
+  }
+
+  $onFromInit() {
+    var someElement = angular.element(document.getElementById('editForm'));
+    this.$document.scrollToElement(someElement, 250, 1000);
   }
 }
 

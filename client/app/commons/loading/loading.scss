@@ -1,5 +1,5 @@
 $innerColor:color('light-blue','base');
-$outerColor:color('deep-orange','darken-3');
+$outerColor:color('deep-orange','base');
 loading {
   position: absolute;
   width: 100%;
@@ -9,7 +9,7 @@ loading {
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   padding-bottom: 40px;
   background: rgba(255, 255, 255, 0.7);
   z-index: 9;

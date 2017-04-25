@@ -1,45 +1,191 @@
 <div>
-    <div class="row animated ng-bounceInDown" ng-show="!$ctrl.$edit">
-        <!--<div ng-switch-when="lesson" ng-form="lessonForm">-->
-        <div class="col m4">
-            <div>
+    <div style="position:relative" ng-form="editForm" id="editForm" class="row animated ng-bounceInDown " ng-show="$ctrl.$edit.mode"
+        ng-switch="$ctrl.$edit.type">
+        <div ng-if="$ctrl.$edit.$error" class="card card-panel red white-text animated ng-fadeIn">
+            {{$ctrl.$edit.$error}}
+        </div>
+        <div class="animated ng-zoomOut" ng-switch-when="lesson">
+            <div class="row">
 
-                <input-container class="input-field">
-                    <label for="">code</label>
-                    <input type="text" />
-                </input-container>
+                <div class="col m4">
+                    <div>
+
+                        <md-input-container>
+                            <label for="">code</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.code" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">name</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.name" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">indexInPath</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.indexInPath" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">xpValue</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.xpValue" />
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="col m4 left">
+                    <div>
+                        <md-input-container>
+                            <label>path</label>
+                            <md-select ng-model="$ctrl.$edit.model.path" placeholder="لطفا انتخاب کنید" aria-label="">
+                                <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
+                                    {{ option }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-switch class="md-primary" md-no-ink name=name ng-model="$ctrl.$edit.model.isActive" aria-label="isActive">
+                            isActive
+                        </md-switch>
+                    </div>
+                </div>
             </div>
-            <div>
-                <input-container class="input-field">
-                    <label for="">name</label>
-                    <input type="text" />
-                </input-container>
+            <div class="row flex flex-row flex-align-center-center">
+                <md-button aria-label="button-label" ng-click="$ctrl.saveLesson($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
             </div>
-            <div>
-                <input-container class="input-field">
-                    <label for="">indexInPath</label>
-                    <input type="text" />
-                </input-container>
-            </div>
-            <div>
-                <input-container class="input-field">
-                    <label for="">xpValue</label>
-                    <input type="text" />
-                </input-container>
-            </div>
+
         </div>
 
-        <div class="col m4 left">
-            <md-select ng-model="test" placeholder="please select" aria-label="">
-                <md-option ng-value="option" ng-repeat="option in [1,2,3]">
-                    {{ option }}
-                </md-option>
-            </md-select>
+        <div class="animated ng-zoomOut" ng-switch-when="box">
+            <div class="row">
+
+                <div class="col m4">
+                    <div>
+
+                        <md-input-container>
+                            <label for="">code</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.code" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">name</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.name" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">indexInPath</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.indexInPath" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">xpValue</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.xpValue" />
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="col m4 left">
+                    <div>
+                        <md-input-container>
+                            <label>path</label>
+                            <md-select ng-model="$ctrl.$edit.model.path" placeholder="لطفا انتخاب کنید" aria-label="">
+                                <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
+                                    {{ option }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-switch class="md-primary" md-no-ink name=isActive ng-model="$ctrl.$edit.model.isActive" aria-label="isActive">
+                            isActive
+                        </md-switch>
+                    </div>
+                    <div>
+                        <md-switch class="md-primary" md-no-ink name=isReview ng-model="$ctrl.$edit.model.isReview" aria-label="isReview">
+                            isReview
+                        </md-switch>
+                    </div>
+                    <div>
+                        <md-switch class="md-primary" md-no-ink name=isTestOut ng-model="$ctrl.$edit.model.isTestOut" aria-label="isTestOut">
+                            isTestOut
+                        </md-switch>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex flex-row flex-align-center-center">
+                <md-button aria-label="button-label" ng-click="$ctrl.saveBox($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
+            </div>
+
         </div>
 
-        <!--</div>-->
+        <div class="animated ng-zoomOut" ng-switch-when="pixel">
+            <div class="row">
+
+                <div class="col m4">
+                    <div>
+
+                        <md-input-container>
+                            <label for="">code</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.code" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">name</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.name" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">indexInPath</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.indexInPath" />
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label for="">xpValue</label>
+                            <input type="text" ng-model="$ctrl.$edit.model.xpValue" />
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div class="col m4 left">
+                    <div>
+                        <md-input-container>
+                            <label>path</label>
+                            <md-select ng-model="$ctrl.$edit.model.path" placeholder="لطفا انتخاب کنید" aria-label="">
+                                <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
+                                    {{ option }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-switch class="md-primary" md-no-ink name=name ng-model="$ctrl.$edit.model.isActive" aria-label="isActive">
+                            isActive
+                        </md-switch>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex flex-row flex-align-center-center">
+                <md-button aria-label="button-label" ng-click="$ctrl.savePixel($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
+            </div>
+
+        </div>
+
+        <loading ng-if="$ctrl.$edit.loading"></loading>
+
     </div>
-    <div class="divider m-t-20 m-b-30 grey darken-3" ng-show="!$ctrl.$edit"></div>
+    <div class="divider m-t-20 m-b-30 grey darken-3" ng-show="$ctrl.$edit.mode"></div>
     <div class="row">
 
         <div class="col s4 ">
@@ -72,7 +218,7 @@
                     </colgroup>
 
 
-                    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson == lesson},lesson.$class]" ng-click="$ctrl.selectLesson(lesson,$index)">
+                    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson.id == lesson.id},{'green lighten-3':(lesson.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'lesson')},lesson.$class]" ng-click="$ctrl.selectLesson(lesson,$index)">
                         <td>{{$index+1}}</td>
                         <td>{{lesson.code}}</td>
                         <td>{{lesson.id}}</td>
@@ -84,7 +230,7 @@
 
         <div class="col s4 ">
             <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-click="$ctrl.add('box')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-20" ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.add('box')"><i class="zmdi zmdi-plus green-text"></i></span>
                 <span class="flex-40 center-align">لیست باکس ها</span>
                 <span class="flex-20 left-align">
                     <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('box', $event)"></i>
@@ -114,7 +260,7 @@
                         <col width="40%" />
                     </colgroup>
 
-                    <tr ng-repeat="box in $ctrl.boxes.data" ng-class="[{selected:$ctrl.$selected.box == box},box.$class]" ng-click="$ctrl.selectBox(box,$index)">
+                    <tr ng-repeat="box in $ctrl.boxes.data" ng-class="[{selected:$ctrl.$selected.box.id == box.id},{'green lighten-3':(box.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'box')},box.$class]" ng-click="$ctrl.selectBox(box,$index)">
                         <td>{{$index+1}}</td>
                         <td>{{box.code}}</td>
                         <td>{{box.id}}</td>
@@ -126,7 +272,7 @@
 
         <div class="col s4">
             <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-click="$ctrl.add('pixel')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-20" ng-if="$ctrl.$selected.box" ng-click="$ctrl.add('pixel')"><i class="zmdi zmdi-plus green-text"></i></span>
                 <span class="flex-40 center-align">لیست پیکسل ها</span>
                 <span class="flex-20 left-align">
                     <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('pixel', $event)"></i>

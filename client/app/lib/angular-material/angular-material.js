@@ -19831,7 +19831,7 @@ function SelectProvider($$interimElementProvider) {
         contentNode = opts.contentEl[0],
         parentRect = parentNode.getBoundingClientRect(),
         targetRect = targetNode.getBoundingClientRect(),
-        shouldOpenAroundTarget = false,
+        shouldOpenAroundTarget = true,
         bounds = {
           left: parentRect.left + SELECT_EDGE_MARGIN,
           top: SELECT_EDGE_MARGIN,

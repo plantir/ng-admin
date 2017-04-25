@@ -4,34 +4,31 @@
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-user-circle"></i>
+        <md-input-container >
           <input type="text" id="userName" ng-model="$ctrl.user.userName">
           <label for="userName">Username</label>
-        </input-container>
+          <md-icon class="fa fa-user-circle"></md-icon >
+        </md-input-container>
       </div>
     </div>
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-user-secret"></i>
+        <md-input-container >
           <input type="password" id="Password" ng-model="$ctrl.user.password">
           <label for="Password">Password</label>
-        </input-container>
+          <md-icon class="fa fa-user-secret"></md-icon >
+        </md-input-container>
       </div>
     </div>
     <div ng-if="$ctrl.error">
       {{$ctrl.error}}
     </div>
-    <div class="checkbox ">
-      <label>
-        <input type="checkbox" id="test5" />
-        <label for="test5">مرا به خاطر بسپار</label>
-    </div>
-
-    <a class="btn-floating btn-large waves-effect waves-light green" ng-click="$ctrl.doLogin($ctrl.user)"><i class="fa fa-long-arrow-left"></i></a>
-
+    <md-checkbox name="name" aria-label="label">مرا به خاطر بسپار</md-checkbox>
+    <md-button ng-click="$ctrl.doLogin($ctrl.user)" aria-label="button-label " class="md-fab green">
+       <md-icon class="fa fa-long-arrow-left"></md-icon >
+    </md-button>
+ 
     <ul class="login-navigation">
       <li class="red" ng-click="$ctrl.setActiveTab('register')">ثبت نام</li>
       <li class="orange" ng-click="$ctrl.setActiveTab('resetPassword')">فراموشی رمز عبور</li>
@@ -42,35 +39,37 @@
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-user"></i>
+        <md-input-container >
           <input type="text" id="userName">
           <label for="userName">Username</label>
-        </input-container>
+          <md-icon class="fa fa-user"></md-icon >
+        </md-input-container>
       </div>
     </div>
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-envelope"></i>
+        <md-input-container >
           <input type="email" id="email">
           <label for="email">Email</label>
-        </input-container>
+          <md-icon class="fa fa-envelope"></md-icon >
+        </md-input-container>
       </div>
     </div>
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-lock"></i>
+        <md-input-container >
           <input type="password" id="Password">
           <label for="Password">Password</label>
-        </input-container>
+          <md-icon class="fa fa-lock"></md-icon >
+        </md-input-container>
       </div>
     </div>
 
-    <a class="btn-floating btn-large waves-effect waves-light red"><i class="fa fa-long-arrow-left"></i></a>
+    <md-button ng-click="$ctrl.doLogin($ctrl.user)" aria-label="button-label " class="md-fab red">
+       <md-icon class="fa fa-long-arrow-left"></md-icon >
+    </md-button>
 
     <ul class="login-navigation">
       <li class="green" ng-click="$ctrl.activeTab ='login'">ورود</li>
@@ -87,16 +86,18 @@
 
     <div class="input-group m-b-20">
       <div class="">
-        <input-container class="input-field has-icon">
-          <i class="fa fa-envelope"></i>
+        <md-input-container >
           <input type="email" id="email">
           <label for="email">Email</label>
-        </input-container>
+          <md-icon class="fa fa-envelope"></md-icon >
+        </md-input-container>
       </div>
     </div>
 
 
-    <a class="btn-floating btn-large waves-effect waves-light orange"><i class="fa fa-long-arrow-left"></i></a>
+    <md-button ng-click="$ctrl.doLogin($ctrl.user)" aria-label="button-label " class="md-fab orange">
+       <md-icon class="fa fa-long-arrow-left"></md-icon >
+    </md-button>
 
     <ul class="login-navigation">
       <li class="green" ng-click="$ctrl.activeTab ='login'">ورود</li>

@@ -1,0 +1,10 @@
+.md-button {
+    &.md-raised {
+        &.md-accent,
+        &.md-primary {
+            color: #fff;
+            font-size: inherit;
+            font-weight: normal;
+        }
+    }
+}

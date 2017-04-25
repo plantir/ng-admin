@@ -1,4 +1,19 @@
 login {
+  md-input-container {
+    margin: 0;
+    &.md-icon-right {
+      padding-right: 45px;
+    }
+    .md-errors-spacer {
+      display: none;
+    }
+    md-icon {
+      font-size: 2rem !important;
+      width: 30px;
+      height: 30px;
+      top: 0;
+    }
+  }
   position: relative;
   display: flex;
   width: 100%;
@@ -24,17 +39,25 @@ login {
     width: 600px;
     display: inline-block;
     position: relative;
-    .btn-floating {
+    .md-fab {
       top: 50%;
+      margin: 0;
       margin-top: -25px;
       left: -25px;
       position: absolute !important;
-      i {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      md-icon {
+        color: #fff;
+        font-size: 1.7rem;
         transition: all;
+        width: 20px;
+        height: 20px;
         transition-duration: 500ms;
       }
       &:hover {
-        i {
+        md-icon {
           transform: rotate(360deg);
         }
       }

@@ -13,7 +13,7 @@ input-container {
                 font-size: .8rem;
                 -webkit-transform: translateY(-140%);
                 transform: translateY(-140%);
-                color: #26a69a;
+                color: #03a9f4;
             }
         }
     }
@@ -27,7 +27,7 @@ input-container {
         content: "";
         transition: all;
         transition-duration: 300ms;
-        background: #26a69a;
+        background: #03a9f4;
     }
     &.active,
     &.has-value {
@@ -38,7 +38,7 @@ input-container {
             font-size: .8rem;
             -webkit-transform: translateY(-140%);
             transform: translateY(-140%);
-            color: #26a69a;
+            color: #03a9f4;
         }
     }
     label {

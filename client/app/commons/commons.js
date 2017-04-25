@@ -1,12 +1,10 @@
 import angular from 'angular';
 
 import "ng-table/bundles/ng-table.js";
-import "angular-material/modules/js/core/core";
-import "angular-material/modules/js/icon/icon";
-import "angular-material/modules/js/input/input";
-import "angular-material/modules/js/dialog/dialog";
-import "angular-material/modules/js/select/select";
 import "angular-loading-bar";
+import "angular-scroll";
+
+import "../lib/angular-material";
 
 import menuTrigger from './menuTrigger/menuTrigger';
 import sidenav from './sidenav/sidenav';
@@ -21,12 +19,10 @@ import loading from './loading/loading';
 
 
 let commonsModule = angular.module('app.commons', [
-        "material.components.icon",
-        "material.components.input",
-        "material.components.dialog",
-        "material.components.select",
+        "ngMaterial",
         "angular-loading-bar",
         "ngTable",
+        "duScroll",
         menuTrigger,
         sidenav,
         header,

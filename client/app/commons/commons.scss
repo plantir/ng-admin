@@ -4,8 +4,10 @@
 @import "~font-awesome/scss/font-awesome.scss";
 @import "~angular-loading-bar/src/loading-bar.css";
 @import "~ng-table/src/styles/ng-table";
-@import "~angular-material/modules/js/dialog/dialog.css";
-@import "~angular-material/modules/js/select/select.css";
+// @import "~angular-material/modules/js/dialog/dialog.css";
+// @import "~angular-material/modules/js/select/select.css";
+@import "./lib/angular-material/modules/scss/angular-material";
+
 @import 'scss/angular-material/angular-material'; //overWrite angular material
 @import 'scss/angular-material/RTL/angular-material.rtl'; //overWrite angular material
 @import 'scss/materialize-css/materialize'; //overWrite angular material
