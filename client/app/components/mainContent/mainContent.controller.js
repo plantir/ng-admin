@@ -232,7 +232,8 @@ class MainContentController {
     this.$edit = {
       mode: true,
       type: type,
-      model: model
+      model: model,
+      $error: null
     }
     this.$onFromInit()
   }
@@ -265,7 +266,8 @@ class MainContentController {
     this.$edit = {
       mode: true,
       type: type,
-      model: model
+      model: model,
+      $error: null
     }
     this.$onFromInit()
 
