@@ -6,6 +6,7 @@ import "angular-scroll";
 
 import "../lib/angular-material";
 
+
 import menuTrigger from './menuTrigger/menuTrigger';
 import sidenav from './sidenav/sidenav';
 import header from './header/header';
@@ -15,6 +16,7 @@ import footer from './footer/footer';
 import fourZeroFour from './fourZeroFour/fourZeroFour';
 import login from './login/login';
 import loading from './loading/loading';
+import mdFile from './mdFile/mdFile';
 
 
 
@@ -31,7 +33,8 @@ let commonsModule = angular.module('app.commons', [
         topMenu,
         fourZeroFour,
         login,
-        loading
+        loading,
+        mdFile
     ])
     .name;
 

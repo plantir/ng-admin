@@ -15,7 +15,11 @@ class MainContentController {
     this.boxes = {};
     this.pixels = {};
     this.pathes = [1, 2, 3];
-
+    this.$edit = {
+      mode:true,
+      type:'pixel'
+    }
+    this.tags = []
   }
 
   selectLesson(lesson, index) {
@@ -40,6 +44,7 @@ class MainContentController {
     if (lesson.id) {
       this.$lesson.edit(serializeLesson, (res) => {
         this.$edit.mode = false
+        this.$onFromDestriy()
         this.$notify('عملیات با موفقیت انجام شد')
         this.lessons.data[lesson.$index] = lesson;
       }, (err) => {
@@ -49,6 +54,7 @@ class MainContentController {
     } else {
       this.$lesson.create(serializeLesson, (res) => {
         this.$edit.mode = false
+        this.$onFromDestriy()
         this.$notify('عملیات با موفقیت انجام شد')
         this.lessons.data.push(res.data)
         this.$edit.model = res.data;
@@ -76,6 +82,7 @@ class MainContentController {
     if (box.id) {
       this.$box.edit(serializebox, (res) => {
         this.$edit.mode = false
+        this.$onFromDestriy()
         this.$notify('عملیات با موفقیت انجام شد')
         this.boxes.data[box.$index] = box;
       }, (err) => {
@@ -85,6 +92,7 @@ class MainContentController {
     } else {
       this.$box.create(serializebox, (res) => {
         this.$edit.mode = false
+        this.$onFromDestriy()
         this.$notify('عملیات با موفقیت انجام شد')
         this.$edit.model = res.data;
         this.boxes.data.push(res.data)
@@ -270,7 +278,7 @@ class MainContentController {
       model: model,
       $error: null
     }
-    this.$onFromInit()
+    this.$timeout(()=>{this.$onFromInit()},500)
   }
 
   add(type) {
@@ -304,12 +312,13 @@ class MainContentController {
       model: model,
       $error: null
     }
-    this.$onFromInit()
+    this.$timeout(()=>{this.$onFromInit()},500)
 
   }
 
   cancelEdit() {
     this.$edit = null;
+    this.$onFromDestriy()
   }
 
   $onInit() {
@@ -335,6 +344,11 @@ class MainContentController {
 
   $onFromInit() {
     var someElement = angular.element(document.getElementById('editForm'));
+    this.$document.scrollToElement(someElement, 150, 1000);
+  }
+
+  $onFromDestriy() {
+    var someElement = angular.element(document.getElementById('content-tables'));
     this.$document.scrollToElement(someElement, 250, 1000);
   }
 }

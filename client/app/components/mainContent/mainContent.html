@@ -1,4 +1,140 @@
 <div>
+
+    <div class="row" id="content-tables">
+
+        <div class="col s4 ">
+            <div class="flex flex-row flex-align-space-between-center title ">
+                <span class="flex-20" ng-click="$ctrl.add('lesson')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-40 center-align">لیست درس ها</span>
+                <span class="flex-20 left-align">
+                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('lesson', $event)"></i>
+                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('lesson')"></i>
+                </span>
+            </div>
+
+            <div class="flex flex-row flex-align-start-center header ">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Name</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('lessons')">
+
+                <loading ng-if="$ctrl.lessons.$loading"></loading>
+                <div ng-if="$ctrl.lessons.data.length === 0" class="center-align p-t-10">
+                    موردی یافت نشد
+                </div>
+                <table class=" highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+
+
+                    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson.id == lesson.id},{'green lighten-3':(lesson.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'lesson')},lesson.$class]"
+                        ng-click="$ctrl.selectLesson(lesson,$index)">
+                        <td>{{$index+1}}</td>
+                        <td>{{lesson.code}}</td>
+                        <td>{{lesson.name}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col s4 ">
+            <div class="flex flex-row flex-align-space-between-center title ">
+                <span class="flex-20" ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.add('box')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-40 center-align">لیست باکس ها</span>
+                <span class="flex-20 left-align">
+                    <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('box', $event)"></i>
+                    <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('box')"></i>
+                </span>
+            </div>
+
+
+            <div class="flex flex-row flex-align-start-center header ">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Name</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('boxes')">
+                <div ng-if="!$ctrl.$selected.lesson" class="center-align p-t-10">
+                    ابتدا درس مورد نظر را انتخاب کنید
+                </div>
+                <loading ng-if="$ctrl.boxes.$loading"></loading>
+                <div ng-if="$ctrl.boxes.data.length === 0" class="center-align p-t-10">
+                    موردی یافت نشد
+                </div>
+                <table class=" highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+
+                    <tr ng-repeat="box in $ctrl.boxes.data" ng-class="[{selected:$ctrl.$selected.box.id == box.id},{'green lighten-3':(box.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'box')},box.$class]"
+                        ng-click="$ctrl.selectBox(box,$index)">
+                        <td>{{$index+1}}</td>
+                        <td>{{box.code}}</td>
+                        <td>{{box.name}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="col s4">
+            <div class="flex flex-row flex-align-space-between-center title ">
+                <span class="flex-20" ng-if="$ctrl.$selected.box" ng-click="$ctrl.add('pixel')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-40 center-align">لیست پیکسل ها</span>
+                <span class="flex-20 left-align">
+                    <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('pixel', $event)"></i>
+                    <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('pixel')"></i>
+                </span>
+            </div>
+
+
+            <div class="flex flex-row flex-align-start-center header ">
+                <span class="flex-20">#</span>
+                <span class="flex-40">code</span>
+                <span class="flex-40">Name</span>
+            </div>
+
+            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('pixels')">
+
+                <div ng-if="!$ctrl.$selected.box" class="center-align p-t-10">
+                    ابتدا باکس مورد نظر را انتخاب کنید
+                </div>
+
+                <loading ng-if="$ctrl.pixels.$loading"></loading>
+
+                <div ng-if="$ctrl.pixels.data.length === 0" class="center-align p-t-10">
+                    موردی یافت نشد
+                </div>
+
+                <table class=" highlight bordered">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+                    <tbody>
+
+                        <tr ng-repeat="pixel in $ctrl.pixels.data" ng-class="[{selected:$ctrl.$selected.pixel == pixel},pixel.$class]" ng-click="$ctrl.selectPixel(pixel,$index)">
+                            <td>{{$index+1}}</td>
+                            <td>{{pixel.code}}</td>
+                            <td>{{pixel.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="divider m-t-20 m-b-30 grey darken-3" ng-show="$ctrl.$edit.mode"></div>
     <div style="position:relative" ng-form="editForm" id="editForm" class="row animated ng-bounceInDown " ng-show="$ctrl.$edit.mode"
         ng-switch="$ctrl.$edit.type">
         <div ng-if="$ctrl.$edit.$error" class="card card-panel red white-text animated ng-fadeIn">
@@ -55,7 +191,7 @@
             </div>
             <div class="row flex flex-row flex-align-center-center">
                 <md-button aria-label="button-label" ng-click="$ctrl.saveLesson($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
-                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-warn md-hue-2"> انصراف </md-button>
             </div>
 
         </div>
@@ -121,7 +257,7 @@
             </div>
             <div class="row flex flex-row flex-align-center-center">
                 <md-button aria-label="button-label" ng-click="$ctrl.saveBox($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
-                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-warn md-hue-2"> انصراف </md-button>
             </div>
 
         </div>
@@ -129,193 +265,168 @@
         <div class="animated ng-zoomOut" ng-switch-when="pixel">
             <div class="row">
 
-                <div class="col m4">
-                    <div>
-
-                        <md-input-container>
-                            <label for="">code</label>
-                            <input type="text" ng-model="$ctrl.$edit.model.code" />
-                        </md-input-container>
-                    </div>
-                    <div>
-                        <md-input-container>
-                            <label for="">name</label>
-                            <input type="text" ng-model="$ctrl.$edit.model.name" />
-                        </md-input-container>
-                    </div>
-                    <div>
-                        <md-input-container>
-                            <label for="">indexInPath</label>
-                            <input type="text" ng-model="$ctrl.$edit.model.indexInPath" />
-                        </md-input-container>
-                    </div>
-                    <div>
-                        <md-input-container>
-                            <label for="">xpValue</label>
-                            <input type="text" ng-model="$ctrl.$edit.model.xpValue" />
-                        </md-input-container>
-                    </div>
+                <div class="col s3">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s3">
+                    <md-input-container>
+                        <label for="">name</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.name" />
+                    </md-input-container>
+                </div>
+                <div class="col s3">
+                    <md-input-container>
+                        <label for="">xpValue</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.name" />
+                    </md-input-container>
+                </div>
+                <div class="col s3">
+                    <md-input-container>
+                        <label for="">xpValue</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.name" />
+                    </md-input-container>
                 </div>
 
-                <div class="col m4 left">
-                    <div>
-                        <md-input-container>
-                            <label>path</label>
-                            <md-select ng-model="$ctrl.$edit.model.path" placeholder="لطفا انتخاب کنید" aria-label="">
-                                <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
-                                    {{ option }}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
-                    <div>
-                        <md-switch class="md-primary" md-no-ink name=name ng-model="$ctrl.$edit.model.isActive" aria-label="isActive">
-                            isActive
-                        </md-switch>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+                <div class="col s2">
+                    <md-input-container>
+                        <label for="">code</label>
+                        <input type="text" ng-model="$ctrl.$edit.model.code" />
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+
+                    <md-input-container>
+                        <label for="">Question text</label>
+                        <textarea></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <md-file label="Question Voice">
+
+                    </md-file>
+
+                </div>
+                <div class="col s6">
+                    <md-file label="Question Image">
+
+                    </md-file>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <label>choice type</label>
+                    <md-select ng-model="$ctrl.$edit.model.choice" placeholder="لطفا انتخاب کنید" aria-label="">
+                        <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
+                            {{ option }}
+                        </md-option>
+                    </md-select>
+
+                </div>
+                <div class="col s6">
+                    <label>special mode</label>
+                    <md-select ng-model="$ctrl.$edit.model.mode" placeholder="لطفا انتخاب کنید" aria-label="">
+                        <md-option ng-value="option" ng-repeat="option in $ctrl.pathes">
+                            {{ option }}
+                        </md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+
+                    <md-input-container>
+                        <label for="">Answer text</label>
+                        <textarea></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <md-file label="Answer Voice">
+
+                    </md-file>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label for="">tags</label>
+                    <md-chips ng-model="$ctrl.tags"  placeholder="Enter a tag"></md-chips>
                 </div>
             </div>
             <div class="row flex flex-row flex-align-center-center">
                 <md-button aria-label="button-label" ng-click="$ctrl.savePixel($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
-                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-accent"> انصراف </md-button>
+                <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-warn md-hue-2"> انصراف </md-button>
             </div>
 
         </div>
 
         <loading ng-if="$ctrl.$edit.loading"></loading>
-
     </div>
-    <div class="divider m-t-20 m-b-30 grey darken-3" ng-show="$ctrl.$edit.mode"></div>
-    <div class="row">
 
-        <div class="col s4 ">
-            <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-click="$ctrl.add('lesson')"><i class="zmdi zmdi-plus green-text"></i></span>
-                <span class="flex-40 center-align">لیست درس ها</span>
-                <span class="flex-20 left-align">
-                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('lesson', $event)"></i>
-                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('lesson')"></i>
-                </span>
-            </div>
-
-            <div class="flex flex-row flex-align-start-center header ">
-                <span class="flex-20">#</span>
-                <span class="flex-40">code</span>
-                <span class="flex-40">Id</span>
-            </div>
-
-            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('lessons')">
-
-                <loading ng-if="$ctrl.lessons.$loading"></loading>
-                <div ng-if="$ctrl.lessons.data.length === 0" class="center-align p-t-10">
-                    موردی یافت نشد
-                </div>
-                <table class=" highlight bordered">
-                    <colgroup>
-                        <col width="20%" />
-                        <col width="40%" />
-                        <col width="40%" />
-                    </colgroup>
-
-
-                    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson.id == lesson.id},{'green lighten-3':(lesson.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'lesson')},lesson.$class]" ng-click="$ctrl.selectLesson(lesson,$index)">
-                        <td>{{$index+1}}</td>
-                        <td>{{lesson.code}}</td>
-                        <td>{{lesson.id}}</td>
-                    </tr>
-                </table>
-            </div>
-
-        </div>
-
-        <div class="col s4 ">
-            <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.add('box')"><i class="zmdi zmdi-plus green-text"></i></span>
-                <span class="flex-40 center-align">لیست باکس ها</span>
-                <span class="flex-20 left-align">
-                    <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('box', $event)"></i>
-                    <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('box')"></i>
-                </span>
-            </div>
-
-
-            <div class="flex flex-row flex-align-start-center header ">
-                <span class="flex-20">#</span>
-                <span class="flex-40">code</span>
-                <span class="flex-40">Id</span>
-            </div>
-
-            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('boxes')">
-                <div ng-if="!$ctrl.$selected.lesson" class="center-align p-t-10">
-                    ابتدا درس مورد نظر را انتخاب کنید
-                </div>
-                <loading ng-if="$ctrl.boxes.$loading"></loading>
-                <div ng-if="$ctrl.boxes.data.length === 0" class="center-align p-t-10">
-                    موردی یافت نشد
-                </div>
-                <table class=" highlight bordered">
-                    <colgroup>
-                        <col width="20%" />
-                        <col width="40%" />
-                        <col width="40%" />
-                    </colgroup>
-
-                    <tr ng-repeat="box in $ctrl.boxes.data" ng-class="[{selected:$ctrl.$selected.box.id == box.id},{'green lighten-3':(box.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'box')},box.$class]" ng-click="$ctrl.selectBox(box,$index)">
-                        <td>{{$index+1}}</td>
-                        <td>{{box.code}}</td>
-                        <td>{{box.id}}</td>
-                    </tr>
-                </table>
-            </div>
-
-        </div>
-
-        <div class="col s4">
-            <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-if="$ctrl.$selected.box" ng-click="$ctrl.add('pixel')"><i class="zmdi zmdi-plus green-text"></i></span>
-                <span class="flex-40 center-align">لیست پیکسل ها</span>
-                <span class="flex-20 left-align">
-                    <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('pixel', $event)"></i>
-                    <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('pixel')"></i>
-                </span>
-            </div>
-
-
-            <div class="flex flex-row flex-align-start-center header ">
-                <span class="flex-20">#</span>
-                <span class="flex-40">code</span>
-                <span class="flex-40">Id</span>
-            </div>
-
-            <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('pixels')">
-
-                <div ng-if="!$ctrl.$selected.box" class="center-align p-t-10">
-                    ابتدا باکس مورد نظر را انتخاب کنید
-                </div>
-
-                <loading ng-if="$ctrl.pixels.$loading"></loading>
-
-                <div ng-if="$ctrl.pixels.data.length === 0" class="center-align p-t-10">
-                    موردی یافت نشد
-                </div>
-
-                <table class=" highlight bordered">
-                    <colgroup>
-                        <col width="20%" />
-                        <col width="40%" />
-                        <col width="40%" />
-                    </colgroup>
-                    <tbody>
-
-                        <tr ng-repeat="pixel in $ctrl.pixels.data" ng-class="[{selected:$ctrl.$selected.pixel == pixel},pixel.$class]" ng-click="$ctrl.selectPixel(pixel,$index)">
-                            <td>{{$index+1}}</td>
-                            <td>{{pixel.code}}</td>
-                            <td>{{pixel.id}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
 </div>

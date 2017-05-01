@@ -8,6 +8,9 @@ module.exports = {
   module: {
     rules: []
   },
+  externals: {
+    jquery: 'jQuery'
+  },
   plugins: [
     // Injects bundles in your index.html instead of wiring all manually.
     // It also adds hash to all injected assets so we don't have problems

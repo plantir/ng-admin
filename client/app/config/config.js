@@ -11,7 +11,8 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
     "ngInject";
     $mdThemingProvider.theme('default')
         .primaryPalette('light-blue')
-        .accentPalette('deep-orange');
+        .accentPalette('deep-orange')
+        .warnPalette('red');
     $httpProvider.defaults.headers.common = {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
         "content-type": "application/x-www-form-urlencoded"
@@ -62,8 +63,8 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                         <h2>{{ dialog.title }}</h2>
                         <p>{{ dialog.textContent }}</p>
                         <div>
-                            <button class="confirm btn" ng-click="dialog.done()" tabindex="1">{{ dialog.ok }}</button>
-                            <button class="cancel btn " ng-click="dialog.abort()" tabindex="2">{{ dialog.cancel }}</button> 
+                            <md-button class="md-raised md-primary" ng-click="dialog.done()" tabindex="1">{{ dialog.ok }}</md-button>
+                            <md-button class="md-raised md-warn md-hue-2" ng-click="dialog.abort()" tabindex="2">{{ dialog.cancel }}</md-button> 
                         </div>
                     </div>   
                     <div ng-if="dialog.$done">
@@ -76,7 +77,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                         <p>{{ dialog.doneTextContent }}</p>
                         <div>
                             
-                            <button class="done btn" ng-click="dialog.hide()" tabindex="1">{{ dialog.doneOk }}</button>
+                            <md-button class="md-raised md-primary" ng-click="dialog.hide()" tabindex="1">{{ dialog.doneOk }}</md-button>
                         </div>
                     </div>
                     <div ng-if="dialog.$error">
@@ -87,8 +88,8 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
                         <h2>{{ dialog.errTitle }}</h2>
                         <p>{{ dialog.errTextContent }}</p>
                         <div>
-                            <button class="confirm btn" ng-click="dialog.done()" tabindex="1">{{ dialog.errRetry }}</button>
-                            <button class="cancel btn " ng-click="dialog.abort()" tabindex="2">{{ dialog.errCancel }}</button> 
+                            <md-button class="md-raised md-primary" ng-click="dialog.done()" tabindex="1">{{ dialog.errRetry }}</md-button>
+                            <md-button class="md-raised md-warn md-hue-2" ng-click="dialog.abort()" tabindex="2">{{ dialog.errCancel }}</md-button> 
                         </div>
                     </div>
                     <loading ng-if="dialog.loading"></loading> 

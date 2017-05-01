@@ -25,8 +25,8 @@
       <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
         <a toggle-submenu><i class="fa fa-home"></i>محتوا</a>
         <ul>
-          <li ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
-            <a ui-sref="mainContent">محتوای اصلی</a>
+          <li >
+            <a ui-sref-active="active" ui-sref="mainContent">محتوای اصلی</a>
           </li>
           <li><a>تعیین سطح</a></li>
           <li><a>لغات</a></li>
@@ -48,7 +48,7 @@
         </ul>
       </li>
       <li>
-        <a href="">آپلود</a>
+        <a ui-sref="fileManager" ui-sref-active="active">آپلود</a>
       </li>
     </ul>
   </div>

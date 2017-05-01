@@ -1,7 +1,8 @@
 .md-button {
     &.md-raised {
         &.md-accent,
-        &.md-primary {
+        &.md-primary,
+        &.md-warn {
             color: #fff;
             font-size: inherit;
             font-weight: normal;
