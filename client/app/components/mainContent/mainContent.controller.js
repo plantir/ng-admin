@@ -15,11 +15,6 @@ class MainContentController {
     this.boxes = {};
     this.pixels = {};
     this.pathes = [1, 2, 3];
-    this.$edit = {
-      mode:true,
-      type:'pixel'
-    }
-    this.tags = []
   }
 
   selectLesson(lesson, index) {
