@@ -1,4 +1,4 @@
-<div flow-init="{target: '/upload',singleFile:true}" flow-file-success="$file.msg = $message">
+<div flow-init="{target: 'http://185.88.153.198/File/UploadAsTemp ',uploadMethod:'PUT',singleFile:true, testChunks: false}" flow-file-success="$file.msg = $message" flow-files-submitted="$flow.upload()">
 
   <label for="">{{$ctrl.label}}</label>
   <md-button flex="20" flow-btn class="md-raised md-primary" aria-label="button-label"> File </md-button>

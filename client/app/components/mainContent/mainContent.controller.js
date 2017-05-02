@@ -108,6 +108,33 @@ class MainContentController {
     this.$selected.pixel = pixel;
   }
 
+  savePixel(pixel) {
+    this.$edit.loading = true;
+    var serializePixel = this.$httpParamSerializerJQLike(pixel)
+    if (pixel.id) {
+      this.$pixel.edit(serializePixel, (res) => {
+        this.$edit.mode = false
+        this.$onFromDestriy()
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.pixeles.data[pixel.$index] = pixel;
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    } else {
+      this.$pixel.create(serializepixel, (res) => {
+        this.$edit.mode = false
+        this.$onFromDestriy()
+        this.$notify('عملیات با موفقیت انجام شد')
+        this.$edit.model = res.data;
+        this.pixeles.data.push(res.data)
+      }, (err) => {
+        this.$edit.loading = false;
+        this.$edit.$error = err.data.message;
+      })
+    }
+  }
+
   onScroll(type) {
     switch (type) {
       case "lessons":

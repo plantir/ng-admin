@@ -32,3 +32,14 @@ $marginValues:(5,10,15,20,25,30,35,40);
       padding-left: #{$item}px;
   }
 }
+
+
+.align-center{
+    text-align: center;
+}
+.align-right{
+    text-align: right;
+}
+.align-left{
+    text-align: left;
+}
