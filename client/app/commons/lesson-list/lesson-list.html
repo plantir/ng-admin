@@ -1,0 +1,37 @@
+<div class="flex flex-row flex-align-space-between-center title ">
+  <span class="flex-20" ng-click="$ctrl.add('lesson')"><i class="zmdi zmdi-plus green-text"></i></span>
+  <span class="flex-40 center-align">لیست درس ها</span>
+  <span class="flex-20 left-align">
+    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('lesson', $event)"></i>
+    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('lesson')"></i>
+  </span>
+</div>
+
+<div class="flex flex-row flex-align-start-center header ">
+  <span class="flex-20">#</span>
+  <span class="flex-40">code</span>
+  <span class="flex-40">Name</span>
+</div>
+
+<div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('lessons')">
+
+  <loading ng-if="$ctrl.lessons.$loading"></loading>
+  <div ng-if="$ctrl.lessons.data.length === 0" class="center-align p-t-10">
+    موردی یافت نشد
+  </div>
+  <table class="highlight bordered">
+    <colgroup>
+      <col width="20%" />
+      <col width="40%" />
+      <col width="40%" />
+    </colgroup>
+
+
+    <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson.id == lesson.id},{'green lighten-3':(lesson.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'lesson')},lesson.$class]"
+      ng-click="$ctrl.selectLesson(lesson,$index)">
+      <td>{{$index+1}}</td>
+      <td>{{lesson.code}}</td>
+      <td>{{lesson.name}}</td>
+    </tr>
+  </table>
+</div>

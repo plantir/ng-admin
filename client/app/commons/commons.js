@@ -1,3 +1,4 @@
+//@ts-check
 import angular from 'angular';
 
 import "ng-table/bundles/ng-table.js";
@@ -17,6 +18,7 @@ import fourZeroFour from './fourZeroFour/fourZeroFour';
 import login from './login/login';
 import loading from './loading/loading';
 import mdFile from './mdFile/mdFile';
+// import lessonList from './lesson-list/lesson-list';
 
 
 
@@ -34,7 +36,7 @@ let commonsModule = angular.module('app.commons', [
         fourZeroFour,
         login,
         loading,
-        mdFile
+        mdFile,
     ])
     .name;
 

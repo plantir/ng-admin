@@ -1,16 +1,16 @@
-import LessonModule from './lesson'
-import LessonController from './lesson.controller';
-import LessonComponent from './lesson.component';
-import LessonTemplate from './lesson.html';
+import Lesson-listModule from './lesson-list'
+import Lesson-listController from './lesson-list.controller';
+import Lesson-listComponent from './lesson-list.component';
+import Lesson-listTemplate from './lesson-list.html';
 
-describe('Lesson', () => {
+describe('Lesson-list', () => {
   let $rootScope, makeController;
 
-  beforeEach(window.module(LessonModule));
+  beforeEach(window.module(Lesson-listModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
     makeController = () => {
-      return new LessonController();
+      return new Lesson-listController();
     };
   }));
 
@@ -30,20 +30,20 @@ describe('Lesson', () => {
     // template specs
     // tip: use regex to ensure correct bindings are used e.g., {{  }}
     it('has name in template [REMOVE]', () => {
-      expect(LessonTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
+      expect(Lesson-listTemplate).to.match(/{{\s?\$ctrl\.name\s?}}/g);
     });
   });
 
   describe('Component', () => {
       // component/directive specs
-      let component = LessonComponent;
+      let component = Lesson-listComponent;
 
       it('includes the intended template',() => {
-        expect(component.template).to.equal(LessonTemplate);
+        expect(component.template).to.equal(Lesson-listTemplate);
       });
 
       it('invokes the right controller', () => {
-        expect(component.controller).to.equal(LessonController);
+        expect(component.controller).to.equal(Lesson-listController);
       });
   });
 });

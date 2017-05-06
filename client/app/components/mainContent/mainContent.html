@@ -44,7 +44,7 @@
 
         <div class="col s4 ">
             <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.add('box')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-20" ><i ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.add('box')" class="zmdi zmdi-plus green-text"></i></span>
                 <span class="flex-40 center-align">لیست باکس ها</span>
                 <span class="flex-20 left-align">
                     <i ng-if="$ctrl.$selected.box" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('box', $event)"></i>
@@ -87,7 +87,7 @@
 
         <div class="col s4">
             <div class="flex flex-row flex-align-space-between-center title ">
-                <span class="flex-20" ng-if="$ctrl.$selected.box" ng-click="$ctrl.add('pixel')"><i class="zmdi zmdi-plus green-text"></i></span>
+                <span class="flex-20" ><i ng-if="$ctrl.$selected.box" ng-click="$ctrl.add('pixel')" class="zmdi zmdi-plus green-text"></i></span>
                 <span class="flex-40 center-align">لیست پیکسل ها</span>
                 <span class="flex-20 left-align">
                     <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('pixel', $event)"></i>

@@ -1,0 +1,219 @@
+<div>
+  <div class="row" id="content-tables">
+    <div class="col s4 ">
+      <div class="flex flex-row flex-align-space-between-center title ">
+        <span class="flex-20" ng-click="$ctrl.add('lesson')"><i class="zmdi zmdi-plus green-text"></i></span>
+        <span class="flex-40 center-align">لیست درس ها</span>
+        <span class="flex-20 left-align">
+                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.delete('lesson', $event)"></i>
+                    <i ng-if="$ctrl.$selected.lesson" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.edit('lesson')"></i>
+                </span>
+      </div>
+
+      <div class="flex flex-row flex-align-start-center header ">
+        <span class="flex-20">#</span>
+        <span class="flex-40">code</span>
+        <span class="flex-40">Name</span>
+      </div>
+
+      <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('lessons')">
+
+        <loading ng-if="$ctrl.lessons.$loading"></loading>
+        <div ng-if="$ctrl.lessons.data.length === 0" class="center-align p-t-10">
+          موردی یافت نشد
+        </div>
+        <table class=" highlight bordered">
+          <colgroup>
+            <col width="20%" />
+            <col width="40%" />
+            <col width="40%" />
+          </colgroup>
+
+
+          <tr ng-repeat="lesson in $ctrl.lessons.data" ng-class="[{selected:$ctrl.$selected.lesson.id == lesson.id},{'green lighten-3':(lesson.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'lesson')},lesson.$class]"
+            ng-click="$ctrl.selectLesson(lesson,$index)">
+            <td>{{$index+1}}</td>
+            <td>{{lesson.code}}</td>
+            <td>{{lesson.name}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="col s4 ">
+      <div class="flex flex-row flex-align-space-between-center title ">
+        <span class="flex-20"><i ng-if="$ctrl.$selected.lesson" ng-click="$ctrl.addPlacement()" class="zmdi zmdi-plus green-text"></i></span>
+        <span class="flex-40 center-align">لیست placement ها</span>
+        <span class="flex-20 left-align">
+        <i ng-if="$ctrl.$selected.placement" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.deletePlacement($event)"></i>
+        <i ng-if="$ctrl.$selected.placement" class="zmdi zmdi-edit blue-text text-lighten-1" ng-click="$ctrl.editPlacement()"></i>
+      </span>
+      </div>
+
+
+      <div class="flex flex-row flex-align-start-center header ">
+        <span class="flex-20 align-right">#</span>
+        <span class="flex-40 align-center">phaseNumber</span>
+        <span class="flex-40 align-center">CorrectPixel</span>
+      </div>
+
+      <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('placements')">
+        <div ng-if="!$ctrl.$selected.lesson" class="center-align p-t-10">
+          ابتدا درس مورد نظر را انتخاب کنید
+        </div>
+        <loading ng-if="$ctrl.placements.$loading"></loading>
+        <div ng-if="$ctrl.placements.data.length === 0" class="center-align p-t-10">
+          موردی یافت نشد
+        </div>
+        <table class="centered highlight bordered">
+          <colgroup>
+            <col width="20%" />
+            <col width="40%" />
+            <col width="40%" />
+          </colgroup>
+
+          <tr ng-repeat="placement in $ctrl.placements.data" ng-class="[{selected:$ctrl.$selected.placement.id == placement.id},{'green lighten-3':(placement.id=== $ctrl.$edit.model.id && $ctrl.$edit.type == 'placement')},placement.$class]"
+            ng-click="$ctrl.selectPlacement(placement,$index)">
+            <td class="align-right">{{$index+1}}</td>
+            <td>{{placement.phaseNumber}}</td>
+            <td>{{placement.numberOfCorrectPixelThreshold}}</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="col s4">
+      <div class="flex flex-row flex-align-space-between-center title ">
+        <span class="flex-20"><i ng-if="$ctrl.$selected.placement" ng-click="$ctrl.addPixel()" class="zmdi zmdi-plus green-text"></i></span>
+        <span class="flex-40 center-align">لیست پیکسل ها</span>
+        <span class="flex-20 left-align">
+        <i ng-if="$ctrl.$selected.pixel" class="zmdi zmdi-delete red-text text-lighten-1" ng-click="$ctrl.deletePixel($event)"></i>
+      </span>
+      </div>
+
+
+      <div class="flex flex-row flex-align-start-center header ">
+        <span class="flex-20">#</span>
+        <span class="flex-40">pixelId</span>
+        <span class="flex-40">Name</span>
+      </div>
+
+      <div class="table-container" custom-scroll-bar on-total-scroll="$ctrl.onScroll('pixels')">
+
+        <div ng-if="!$ctrl.$selected.placement" class="center-align p-t-10">
+          ابتدا باکس مورد نظر را انتخاب کنید
+        </div>
+
+        <loading ng-if="$ctrl.pixels.$loading"></loading>
+
+        <div ng-if="$ctrl.pixels.data.length === 0" class="center-align p-t-10">
+          موردی یافت نشد
+        </div>
+
+        <table class=" highlight bordered">
+          <colgroup>
+            <col width="20%" />
+            <col width="40%" />
+            <col width="40%" />
+          </colgroup>
+          <tbody>
+
+            <tr ng-repeat="pixel in $ctrl.pixels.data" ng-class="[{selected:$ctrl.$selected.pixel == pixel},pixel.$class]" ng-click="$ctrl.selectPixel(pixel,$index)">
+              <td>{{$index+1}}</td>
+              <td>{{pixel.pixelId}}</td>
+              <td>{{pixel.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <div class="divider m-t-20 m-b-30 grey darken-3" ng-show="$ctrl.$edit.mode"></div>
+  <div style="position:relative" ng-form="editForm" id="editForm" class="row animated ng-bounceInDown " ng-show="$ctrl.$edit.mode"
+    ng-switch="$ctrl.$edit.type">
+    <div ng-if="$ctrl.$edit.$error" class="card card-panel red white-text animated ng-fadeIn">
+      {{$ctrl.$edit.$error}}
+    </div>
+
+
+    <div class="animated ng-zoomOut" ng-switch-when="placement">
+      <div class="row">
+
+        <div class="col m4">
+          <div>
+
+            <md-input-container>
+              <label for="">numberOfCorrectPixelThreshold</label>
+              <input type="text" ng-model="$ctrl.$edit.model.numberOfCorrectPixelThreshold" />
+            </md-input-container>
+          </div>
+
+          <div>
+            <md-input-container>
+              <label>phaseNumber</label>
+              <md-select ng-model="$ctrl.$edit.model.phaseNumber" aria-label="">
+                <md-option ng-value="option" ng-repeat="option in $ctrl.phaseNumbers">
+                  {{ option }}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row flex flex-row flex-align-center-center">
+        <md-button aria-label="button-label" ng-click="$ctrl.savePlacement($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
+        <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-warn md-hue-2"> انصراف </md-button>
+      </div>
+
+    </div>
+
+    <div class="animated ng-zoomOut" ng-switch-when="pixel">
+      <div class="row animated ng-fadeIn ng-zoomOut" ng-repeat="item in $ctrl.$edit.model">
+
+        <div class="col m4">
+          <div>
+
+            <md-input-container>
+              <label for="">orderNumber</label>
+              <input type="text" ng-model="item.orderNumber " />
+            </md-input-container>
+          </div>
+        </div>
+
+        <div class="col m4">
+          <div>
+            <md-input-container>
+              <label>phaseNumber</label>
+              <md-select ng-model="item.phaseNumber " aria-label="">
+                <md-option ng-value="option" ng-repeat="option in $ctrl.phaseNumbers">
+                  {{ option }}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+
+        </div>
+        <div class="col m2 remove-row flex flex-align-start-center" ng-if="$index > 0">
+          <a ng-click="$ctrl.removeRow($index)" class="red-text">
+            <i class="zmdi zmdi-close"></i>
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <md-button aria-label="Add Row" ng-click="$ctrl.$edit.model.push({phaseNumber:$ctrl.$edit.model[0].phaseNumber})" class="md-raised md-primary"> Add Row </md-button>
+      </div>
+      <div class="row flex flex-row flex-align-center-center">
+        <md-button aria-label="button-label" ng-click="$ctrl.savePixel($ctrl.$edit.model)" class="md-raised md-primary"> ذخیره </md-button>
+        <md-button aria-label="button-label" ng-click="$ctrl.cancelEdit()" class="md-raised md-warn md-hue-2"> انصراف </md-button>
+      </div>
+
+    </div>
+
+    <loading ng-if="$ctrl.$edit.loading"></loading>
+  </div>
+</div>

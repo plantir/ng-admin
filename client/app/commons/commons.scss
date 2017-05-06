@@ -239,23 +239,23 @@ input:-webkit-autofill {
         flex-direction: row;
     }
     &.flex-align-center-center {
-        align-content: center;
+        align-items: center;
         justify-content: center;
     }
     &.flex-align-start-center {
-        align-content: center;
+        align-items: center;
         justify-content: flex-start;
     }
     &.flex-align-end-center {
-        align-content: center;
+        align-items: center;
         justify-content: flex-end;
     }
     &.flex-align-space-around-center {
-        align-content: center;
+        align-items: center;
         justify-content: space-around;
     }
     &.flex-align-space-between-center {
-        align-content: center;
+        align-items: center;
         justify-content: space-between;
     }
 }
