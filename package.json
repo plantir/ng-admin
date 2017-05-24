@@ -79,6 +79,7 @@
     "filter": "gulp filter",
     "service": "gulp service",
     "serve": "gulp serve",
+    "dev": "gulp serve",
     "start": "gulp serve",
     "watch": "gulp serve",
     "build": "gulp webpack",
