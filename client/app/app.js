@@ -18,7 +18,7 @@ angular.module('app', [
     factoriesModule
   ])
   .constant('$static', {
-    baseUrl: 'http://185.88.153.198'
+    baseUrl: 'http://88.99.98.177'
   })
   .run(['$rootScope', '$state', '$stateParams',
     'authorization', 'principal',

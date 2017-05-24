@@ -32,10 +32,10 @@
           <li><a>لغات</a></li>
         </ul>
       </li>
-      <li class="sub-menu">
+      <li class="sub-menu" ng-class="{ 'active toggled': $ctrl.$state.includes('content') }">
         <a toggle-submenu><i class="fa fa-home"></i>اعداد</a>
         <ul>
-          <li><a>فرمول های قوت</a></li>
+          <li><a ui-sref-active="active" ui-sref="strengthFormula">فرمول های قوت</a></li>
           <li><a>لول</a></li>
           <li><a>گرید</a></li>
         </ul>
