@@ -1,0 +1,115 @@
+<div class="m-b-10">
+    <md-button class="md-raised md-primary addRow" aria-label="button-label" ng-click="$ctrl.add()">
+        <md-icon class="zmdi zmdi-plus"></md-icon> افزدن جدید </md-button>
+</div>
+<div>
+
+    <table ng-table="$ctrl.tableParams" class="table bordered centered highlight responsive-table">
+        <colgroup>
+            <col width="5%" />
+            <col width="5%" />
+            <col width="5%" />
+            <col width="5%" />
+            <col width="5%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="10%" />
+            <col width="10%" />
+        </colgroup>
+        <tr ng-repeat="item in $data" class="animated ng-lightSpeedOut ng-lightSpeedIn" ng-class="'ng-delay'+$index">
+            <td title="'0'">
+                <span ng-if="!item.$editing">
+                {{item.coefficient0InReductionFormula}} 
+            </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.coefficient0InReductionFormula">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'1'">
+                <span ng-if="!item.$editing">
+                    {{item.coefficient1InReductionFormula}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.coefficient1InReductionFormula">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'2'">
+                <span ng-if="!item.$editing">
+                    {{item.coefficient2InReductionFormula}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.coefficient2InReductionFormula">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'3'">
+                <span ng-if="!item.$editing">
+                    {{item.coefficient3InReductionFormula}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.coefficient3InReductionFormula">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'4'">
+                <span ng-if="!item.$editing">
+                    {{item.coefficient4InReductionFormula}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.coefficient4InReductionFormula">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'yellow'">
+                <span ng-if="!item.$editing">
+                    {{item.yellowThresholdInDays}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.yellowThresholdInDays">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'red'">
+                <span ng-if="!item.$editing">
+                    {{item.redThresholdInDays}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.redThresholdInDays">
+                    </md-input-container>
+                </div>
+            </td>
+            <td title="'passedCount'">
+                <span ng-if="!item.$editing">
+                    {{item.passedCount}}
+                </span>
+                <div ng-if="item.$editing">
+                    <md-input-container class="input-field">
+                        <input type="text" id="code" ng-model="item.passedCount">
+                    </md-input-container>
+                </div>
+            </td>
+
+
+            <td title="'Action'" class="action">
+                <md-icon ng-click="$ctrl.edit(item)" ng-if="!item.$editing" class="zmdi zmdi-edit blue-text"></md-icon>
+
+                <md-icon ng-click="$ctrl.save(item)" ng-if="item.$editing" class="zmdi zmdi-check green-text"></md-icon>
+
+                <md-icon ng-click="$ctrl.cancelEdit(item, $index)" ng-if="item.$editing" class="zmdi zmdi-close red-text"></md-icon>
+
+                <md-icon ng-click="$ctrl.delete(item,$index,$event)" ng-if="!item.$editing" class="zmdi zmdi-delete red-text"></md-icon>
+
+
+            </td>
+        </tr>
+    </table>
+</div>

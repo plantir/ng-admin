@@ -1,0 +1,156 @@
+<div class="row">
+    <div class="col m12">
+        <md-radio-group layout="row" ng-model="$ctrl.type" ng-change="$ctrl.typeChange()">
+            <md-radio-button value="level" aria-label="label">
+                level
+            </md-radio-button>
+            <md-radio-button value="grade" aria-label="label">
+                grade
+            </md-radio-button>
+        </md-radio-group>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col m12" ng-if="$ctrl.type == 'level'">
+        <table ng-table="$ctrl.tableParams" class="table bordered centered highlight responsive-table">
+            <colgroup>
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+            </colgroup>
+
+
+            <tr ng-repeat="item in $data" class="animated ng-lightSpeedOut ng-lightSpeedIn" ng-class="'ng-delay'+$index">
+                <td title="'levelName'">
+                    <span ng-if="!item.$editing">
+                {{item.levelName}} 
+            </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.levelName">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'fromXpValue'">
+                    <span ng-if="!item.$editing">
+                    {{item.fromXpValue}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.fromXpValue">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'toXpValue'">
+                    <span ng-if="!item.$editing">
+                    {{item.toXpValue}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.toXpValue">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'id'">
+                    <span ng-if="!item.$editing">
+                    {{item.id}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" readonly="true" id="code" ng-model="item.id">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'Action'" class="action">
+                    <md-icon ng-click="$ctrl.edit(item)" ng-if="!item.$editing" class="zmdi zmdi-edit blue-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.save(item)" ng-if="item.$editing" class="zmdi zmdi-check green-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.cancelEdit(item, $index)" ng-if="item.$editing" class="zmdi zmdi-close red-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.delete(item,$index,$event)" ng-if="!item.$editing" class="zmdi zmdi-delete red-text"></md-icon>
+
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    <div ng-if="$ctrl.type == 'grade'" class="col m12">
+
+        <table ng-table="$ctrl.tableParams" class="table bordered centered highlight responsive-table">
+            <colgroup>
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="5%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+                <col width="10%" />
+            </colgroup>
+
+            <tr ng-repeat="item in $data" class="animated ng-lightSpeedOut ng-lightSpeedIn" ng-class="'ng-delay'+$index">
+                <td title="'gradeName'">
+                    <span ng-if="!item.$editing">
+                {{item.gradeName}} 
+            </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.gradeName">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'fromFactorValue'">
+                    <span ng-if="!item.$editing">
+                    {{item.fromFactorValue}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.fromFactorValue">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'toFactorValue'">
+                    <span ng-if="!item.$editing">
+                    {{item.toFactorValue}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" id="code" ng-model="item.toFactorValue">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'id'">
+                    <span ng-if="!item.$editing">
+                    {{item.id}}
+                </span>
+                    <div ng-if="item.$editing">
+                        <md-input-container class="input-field">
+                            <input type="text" readonly="true" id="code" ng-model="item.id">
+                        </md-input-container>
+                    </div>
+                </td>
+                <td title="'Action'" class="action">
+                    <md-icon ng-click="$ctrl.edit(item)" ng-if="!item.$editing" class="zmdi zmdi-edit blue-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.save(item)" ng-if="item.$editing" class="zmdi zmdi-check green-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.cancelEdit(item, $index)" ng-if="item.$editing" class="zmdi zmdi-close red-text"></md-icon>
+
+                    <md-icon ng-click="$ctrl.delete(item,$index,$event)" ng-if="!item.$editing" class="zmdi zmdi-delete red-text"></md-icon>
+
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

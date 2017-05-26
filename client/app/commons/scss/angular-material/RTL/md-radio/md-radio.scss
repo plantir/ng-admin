@@ -1,0 +1,27 @@
+md-radio-group.layout-row md-radio-button,
+md-radio-group.layout-xs-row md-radio-button,
+md-radio-group.layout-gt-xs-row md-radio-button,
+md-radio-group.layout-sm-row md-radio-button,
+md-radio-group.layout-gt-sm-row md-radio-button,
+md-radio-group.layout-md-row md-radio-button,
+md-radio-group.layout-gt-md-row md-radio-button,
+md-radio-group.layout-lg-row md-radio-button,
+md-radio-group.layout-gt-lg-row md-radio-button,
+md-radio-group.layout-xl-row md-radio-button {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+md-radio-button {
+    .md-container {
+        right: 0;
+        left: auto;
+    }
+    .md-label {
+        margin-right: 1.8rem;
+        margin-left: 0;
+        
+    }
+}

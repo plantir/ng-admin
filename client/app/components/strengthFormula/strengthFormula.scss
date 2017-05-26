@@ -1,3 +1,12 @@
-.strengthFormula {
-  color: red;
+strength-formula {
+  .zmdi {
+    font-size: 1.2rem;
+  }
+  .addRow {
+    padding: 0.1rem 0.5rem;
+    md-icon.zmdi {
+      font-size: 1.6rem;
+      color: #fff;
+    }
+  }
 }

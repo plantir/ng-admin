@@ -9,10 +9,17 @@ const configModule = angular.module('app.config', [
 // appConfig.$inject =["$urlRouterProvider"]
 function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogProvider, $mdThemingProvider, $mdToastProvider) {
     "ngInject";
+    var customLightBlue = $mdThemingProvider.extendPalette('light-blue', {
+        'contrastDefaultColor': 'light'
+    });
+
+    // Register the new color palette map with the name <code>neonRed</code>
+    $mdThemingProvider.definePalette('c-light-blue', customLightBlue);
+
     $mdThemingProvider.theme('default')
-        .primaryPalette('light-blue')
+        .primaryPalette('c-light-blue')
         .accentPalette('deep-orange')
-        .warnPalette('red');
+        .warnPalette('red')
     $httpProvider.defaults.headers.common = {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
         "content-type": "application/x-www-form-urlencoded"
@@ -148,7 +155,7 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
         }
     });
     $mdToastProvider.addPreset('notify', {
-        methods: ['textContent','parent','position','hideDelay'],
+        methods: ['textContent', 'parent', 'position', 'hideDelay'],
         options: function () {
             return {
                 template: `
@@ -160,10 +167,10 @@ function appConfig($urlRouterProvider, $stateProvider, $httpProvider, $mdDialogP
 
                     </md-toast>`,
                 controllerAs: 'toast',
-                controller:function mdToastCtrl($mdToast){
+                controller: function mdToastCtrl($mdToast) {
                     "ngInject"
 
-                    this.close = ()=>{
+                    this.close = () => {
                         console.log("object");
                         $mdToast.hide()
                     }
