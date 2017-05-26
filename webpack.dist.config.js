@@ -38,13 +38,11 @@ config.module.rules = [{
       use: [{
           loader: "css-loader",
           options: {
-            sourceMap: true,
             minimize: true
           }
         }, {
           loader: "sass-loader",
           options: {
-            sourceMap: true
           }
         },
         {
